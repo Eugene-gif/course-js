@@ -1,0 +1,14 @@
+.footer {
+  width: 100%;
+  background-color: var(--bg);
+  color: var(--bg-text);
+  padding: 10px 0;
+
+  p {
+    margin: 0;
+  }
+
+  &__content {
+    text-align: center;
+  }
+}
