@@ -7,8 +7,8 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Курс по JavaScript</title>
-  <script type="module" crossorigin src="/course-js/assets/index-745f80d7.js"></script>
-  <link rel="stylesheet" href="/course-js/assets/index-f38e2a0c.css">
+  <script type="module" crossorigin src="/course-js/assets/index-f4ad5af0.js"></script>
+  <link rel="stylesheet" href="/course-js/assets/index-6a95fc85.css">
 </head>
 
 <body>
@@ -156,8 +156,8 @@
           </li>
 
           <li class="nav__item">
-            <a href="#order" data-link="order">
-              Заказ
+            <a href="#types" data-link="types">
+              Типы
             </a>
           </li>
 
@@ -196,7 +196,7 @@
   <h2 class="title">Основы</h2>
 
   <section class="page__section">
-    <h5>Основы объектов</h5>
+    <h5>Основы JS:</h5>
     <p class="text">Практически все сущности в JS - это объекты.</p>
     <p class="text">Объект - это набор свойств "имя: значение"</p>
     <code class="code">
@@ -215,7 +215,7 @@
     </code>
     <p class="text">Массив - это Объект, Функция - это Объект, <br> Число - это
       Объект*, Строка - это Объект*</p>
-    <p class="text">* ведут себя как объекты</p>
+    <p class="text">* точнее они ведут себя как объекты</p>
   </section>
 
   <section class="page__section">
@@ -252,17 +252,82 @@
 
   <section class="page__section">
     <h5>Переменные:</h5>
-    <p class="text">Что-то про переменные</p>
+    <p class="text">Переменные дают возможность повторного доступа к значениям</p>
+    <p class="text">Имена переменных:</p>
+    <ul class="list-column">
+      <li>
+        <span class="bold">PascalCase</span> - так в основном называют типы и классы
+      </li>
+      <li>
+        <span class="bold">DB_PASSWORD</span> - так называют константы, значения этих переменных известны до запуска приложения они постоянны, т.е. константы
+      </li>
+      <li>
+        <span class="bold">camelCase</span> - camelCase нотация используется для всех остальных имён переменных
+      </li>
+    </ul>
+    <p class="text underline">Названия переменных должны быть понятными!</p>
+    <p class="text">Объявлять переменные можно при помощи следующих ключевых слов:</p>
+    <ul class="list-column">
+      <li><span class="bold">let</span> - es6, это изменяемая переменная</li>
+      <li><span class="bold">const</span> - es6, это неизменяемая переменная, константа</li>
+      <li><span class="bold">var</span> - устаревшее ключевое слово</li>
+    </ul>
+    <p class="text underline">Константе нельзя присваивать новые значения и нельзя объявлять её пустой!</p>
+    <p class="bold">Объявление и присваивание:</p>
     <code class="code">
-      Что-то из кода про переменные
+      let a <i>// Объявление переменной</i>
+      const c = 10 <i>// Объявление и присваивание</i>
+      a = true <i>// Только присваивание</i>
+
+      c = 11 <i>// Uncaught TypeError: Assignment to constant variable.</i>
+      const b <i>// Uncaught SyntaxError: Missing initializer in const declaration</i>
     </code>
+
+    <code class="code">
+      console.log(a) <i>// ReferenceError: a is not defined</i>
+      let a
+      console.log(a) <i>// undefined</i>
+
+      a = true
+      console.log(a) <i>// true</i>
+    </code>
+
+
   </section>
 </section>
-    <section class="order container _page" id="order" data-page="order">
-  <h2 class="order__title">
-    Заказ
+    <section class="container page _page" id="types" data-page="types">
+  <h2 class="types__title">
+    Типы
   </h2>
-  <p></p>
+  <section class="page__section">
+    <p class="bold underline">Тип переменной определяется типом присвоеного значения</p>
+    <code class="code">
+      const a = 10 <i>// number</i>
+      const b = 'abc' <i>// string</i>
+    </code>
+    <p class="text">Переменная => Имеет значение => Значение имеет тип</p>
+  </section>
+
+  <section class="page__section">
+    <h5>Примитивные типы:</h5>
+    <ol class="list-column">
+      <li>string (строка)</li>
+      <li>boolean (логический)</li>
+      <li>number (число)</li>
+      <li>null</li>
+      <li>undefined</li>
+      <li>symbol (символ)</li>
+    </ol>
+    <p class="text"><span class="bold">null</span> - используется тогда, когда вы хотите явно указать, что у какой-либо переменной на данном этапе отсутствует значение.</p>
+    <p class="text"><span class="bold">undefined</span> - значение у той или иной переменной нету, его не существует, оно не определено.</p>
+    <p class="text">Разница между <span class="bold">null</span> и <span class="bold">undefined</span> в том, что null мы присваиваем сами, как-бы явно говоря, что сейчас у этой переменной нет значения, и возможно позже оно будет присвоено, но сейчас оно null. Undefined не нужно присваивать переменной, когда мы объявляем переменную при помощи let и не присваиваем новое значение, то значение этой переменной будет 'undefined' (т.е. неопределено).</p>
+    <p class="text"><span class="bold">symbol</span> - с помощью этого типа можно создавать уникальные значения, используется достаточно редко.</p>
+  </section>
+
+  <section class="page__section">
+    <h5>Ссылочный тип:</h5>
+    <p class="text"><span class="bold">Object (объект)</span></p>
+  </section>
 </section>
     <section class="delivery container _page" id="delivery" data-page="delivery">
   <h2 class="delivery__title">
