@@ -2,7 +2,7 @@
   <h2 class="title">Основы</h2>
 
   <section class="page__section">
-    <h5>Основы объектов</h5>
+    <h5>Основы JS:</h5>
     <p class="text">Практически все сущности в JS - это объекты.</p>
     <p class="text">Объект - это набор свойств "имя: значение"</p>
     <code class="code">
@@ -21,7 +21,7 @@
     </code>
     <p class="text">Массив - это Объект, Функция - это Объект, <br> Число - это
       Объект*, Строка - это Объект*</p>
-    <p class="text">* ведут себя как объекты</p>
+    <p class="text">* точнее они ведут себя как объекты</p>
   </section>
 
   <section class="page__section">
@@ -58,9 +58,46 @@
 
   <section class="page__section">
     <h5>Переменные:</h5>
-    <p class="text">Что-то про переменные</p>
+    <p class="text">Переменные дают возможность повторного доступа к значениям</p>
+    <p class="text">Имена переменных:</p>
+    <ul class="list-column">
+      <li>
+        <span class="bold">PascalCase</span> - так в основном называют типы и классы
+      </li>
+      <li>
+        <span class="bold">DB_PASSWORD</span> - так называют константы, значения этих переменных известны до запуска приложения они постоянны, т.е. константы
+      </li>
+      <li>
+        <span class="bold">camelCase</span> - camelCase нотация используется для всех остальных имён переменных
+      </li>
+    </ul>
+    <p class="text underline">Названия переменных должны быть понятными!</p>
+    <p class="text">Объявлять переменные можно при помощи следующих ключевых слов:</p>
+    <ul class="list-column">
+      <li><span class="bold">let</span> - es6, это изменяемая переменная</li>
+      <li><span class="bold">const</span> - es6, это неизменяемая переменная, константа</li>
+      <li><span class="bold">var</span> - устаревшее ключевое слово</li>
+    </ul>
+    <p class="text underline">Константе нельзя присваивать новые значения и нельзя объявлять её пустой!</p>
+    <p class="bold">Объявление и присваивание:</p>
     <code class="code">
-      Что-то из кода про переменные
+      let a <i>// Объявление переменной</i>
+      const c = 10 <i>// Объявление и присваивание</i>
+      a = true <i>// Только присваивание</i>
+
+      c = 11 <i>// Uncaught TypeError: Assignment to constant variable.</i>
+      const b <i>// Uncaught SyntaxError: Missing initializer in const declaration</i>
     </code>
+
+    <code class="code">
+      console.log(a) <i>// ReferenceError: a is not defined</i>
+      let a
+      console.log(a) <i>// undefined</i>
+
+      a = true
+      console.log(a) <i>// true</i>
+    </code>
+
+
   </section>
 </section>
