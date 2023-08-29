@@ -3,7 +3,7 @@ import { resolve } from 'path';
 import injectHTML from 'vite-plugin-html-inject';
 
 export default defineConfig({
-	base: "/template-2023",
+	base: "/course-js",
 	server: {
     open: true,
     host: true,
