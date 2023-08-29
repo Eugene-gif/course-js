@@ -50,9 +50,9 @@ h4,
 h5 {
   margin-top: 0.5rem;
   margin-bottom: 1.1rem;
-  text-align: center;
+  // text-align: center;
   text-wrap: balance;
-  line-height: 1.2;
+  line-height: 1;
 }
 
 a {
@@ -67,11 +67,13 @@ a {
 h1 {
   font-weight: 800;
   font-size: clamp(2rem, 1.5417rem + 2.2917vw, 3.375rem);
+  text-align: center;
   // font-size: clamp(32px, 3cqi, 54px);
 }
 
 h2 {
   font-size: clamp(1.75rem, 1.4583rem + 1.4583vw, 2.625rem);
+  text-align: center;
   // font-size: clamp(28px, 3cqi, 42px);
 }
 
@@ -88,6 +90,7 @@ h4 {
 h5 {
   font-size: clamp(1.125rem, 1rem + 0.625vw, 1.5rem);
   // font-size: clamp(18px, 3cqi, 24px);
+  // margin: 5px ;
 }
 
 p {

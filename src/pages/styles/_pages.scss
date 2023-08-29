@@ -10,6 +10,14 @@
 .page {
   width: clamp(30ch, 100%, 90ch);
 
+  &__section {
+    margin-bottom: 35px;
+  }
+
+  h5 {
+    margin: 10px 0 20px 0;
+  }
+
   .text {
     line-height: 1.4;
     font-weight: 500;
@@ -25,9 +33,14 @@
     display: block;
     font-weight: 600;
     font-size: 15px;
-    letter-spacing: 0.2px;
-    color: #4646a6;
+    color: #9e6ae2;
     white-space: pre-wrap;
+    background-color: rgba(0, 0, 0, 0.48);
+    border-radius: 5px;
+    margin-bottom: 10px;
     overflow: auto;
+    i {
+      color: #9E9E9E;
+    }
   }
 }

@@ -1,19 +1,66 @@
 <section class="container page _page" id="basics" data-page="basics">
   <h2 class="title">Основы</h2>
-  <p>Практически все сущности в JS - это объекты.</p>
 
   <section class="page__section">
-    <div class="text-bold">Получение значений свойств:</div>
+    <h5>Основы объектов</h5>
+    <p class="text">Практически все сущности в JS - это объекты.</p>
+    <p class="text">Объект - это набор свойств "имя: значение"</p>
     <code class="code">
-      const myCity = {
-        city: 'New Yourk',
-        popular: true,
-        country: 'USA',
+      <i>// Пример объекта</i>
+      {
+        visible: true,
+        colorDepth: 24,
+        title: 'My Image',
+        orientation: {
+          angle: 0,
+          type: 'landscape'
+        },
+        pixelDepth: 24,
+        width: 1440,
       }
-
-      console.log(myCity.city); // 'New Yourk'
-      console.log(myCity.popular); // true
     </code>
-    <p class="text">Такой синтаксис называется точечной записью</p>
+    <p class="text">Массив - это Объект, Функция - это Объект, <br> Число - это
+      Объект*, Строка - это Объект*</p>
+    <p class="text">* ведут себя как объекты</p>
+  </section>
+
+  <section class="page__section">
+    <h5>Объект console:</h5>
+    
+    <code class="code">
+      <i>// Отображает все свойства объекта</i>
+      console.dir();
+
+      <i>// Отображает все свойства объекта в табличном виде</i>
+      console.table();
+    </code>
+  </section>
+
+  <section class="page__section">
+    <h5>Выражение:</h5>
+    <p class="text">Выражение возвращает значение</p>
+    <code class="code">
+      <i>// Примеры выражений</i>
+      'abc'
+      10 
+      5 + 2 
+      c = 10 
+      'Good ' + 'Evening'
+      a &#60;= b || c !== d
+      myFunction(c, d)
+
+      <i>// Выражения с побочными действиями</i>
+      a = 5
+      b++
+      myFunction(c, d)
+    </code>
+  </section>
+
+  <section class="page__section">
+    <h5>Переменные:</h5>
+    <p class="text">Что-то про переменные</p>
+    <code class="code">
+      Что-то из кода про переменные
+    </code>
   </section>
 </section>
