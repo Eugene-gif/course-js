@@ -50,12 +50,11 @@
       объект.</p>
     <code class="code">
       const objectA = {
-      a: 10,
-      b: true
+        a: 10,
+        b: true
       }
 
-      const copyOfA = objectA; <i>// Объект остаётся в памяти в одном месте, а
-        ссылка на него копируется с одной переменной в другую переменную</i>
+      const copyOfA = objectA; <i>// Объект остаётся в памяти в одном месте, а ссылка на него копируется с одной переменной в другую переменную</i>
 
       copyOfA.a = 20; <i>// objectA.a => 20</i>
       <i>// Изменяя copyOfA мы изменяем и objectA, т.к. они являются ссылками на
@@ -88,7 +87,7 @@
     <p class="bold">Пример с функцией:</p>
     <code class="code">
       function a() {
-      console.log('Hey there');
+        console.log('Hey there');
       }
 
       a() <i>// 'Hey there'</i>

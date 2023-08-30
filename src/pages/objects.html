@@ -1,0 +1,129 @@
+<section class="container page _page" id="objects" data-page="objects">
+  <h2>Объекты</h2>
+  <section class="page__section">
+    <h5>Общее</h5>
+    <p class="text"><b>Объект</b> - это набор свойств "имя: значение"</p>
+    
+    <p class="bold">Структура и синтаксис:</p>
+    <code class="code">
+      const myCity = {
+        city: 'New York',
+        popular: true,
+        country: 'USA'
+      }
+    </code>
+    <p>Порядок свойств в объекте не имеет значения.</p>
+
+    <p class="bold">Получение значений свойств:</p>
+    <code class="code">
+      console.log(myCity.city) <i>// 'New York'</i>
+      console.log(myCity.popular) <i>// 'true'</i>
+      <i>// Этот синтаксис называется точечная запись(Dot notation)</i>
+    </code>
+
+    <p class="bold">Изменение значений свойств:</p>
+    <code class="code">
+      const myCity = {
+        city: 'New York',
+      }
+
+      myCity.city = 'Krasnodar';
+
+      console.log(myCity) 
+      <i>// {city: 'Krasnodar'}</i>
+    </code>
+
+    <p class="bold">Добавление новых свойств:</p>
+    <code class="code">
+      const myCity = {
+        city: 'New York',
+      }
+
+      myCity.popular = true;
+      console.log(myCity) 
+      <i>// {city: 'New York', popular: true}</i>
+
+      myCity.country = 'Russia';
+      console.log(myCity) 
+      <i>// {city: 'New York', popular: true, country: 'Russia'}</i>
+    </code>
+
+    <p class="bold">Удаление свойств:</p>
+    <code class="code">
+      const myCity = {
+        city: 'New York',
+        popular: true,
+        country: 'USA'
+      }
+
+      delete myCity.country;
+      console.log(myCity); 
+      <i>// {city: 'New York', popular: true}</i>
+    </code>
+
+    <p class="bold">Доступ к значению свойства с использованием скобок:</p>
+    <code class="code">
+      const myCity = {
+        city: 'New York',
+      }
+
+      myCity['popular'] = true;
+      console.log(myCity);
+      <i>// {city: 'New York', popular: true}</i>
+
+      const countryPropertyName = 'country';
+      myCity[countryPropertyName] = 'USA';
+
+      console.log(myCity);
+      <i>// {city: 'New York', popular: true, country: 'USA'}</i>
+    </code>
+
+    <p class="bold">Вложенные свойства:</p>
+    <code class="code">
+      const myCity = {
+        city: 'New York',
+        info: {
+          isPopular: true,
+          country: 'USA'
+        }
+      }
+
+      console.log(myCity.info.isPopular);
+      <i>// true</i>
+
+      delete myCity.info['isPopular'];
+      
+      console.log(myCity);
+      <i>// { city: 'New York', info: { country: 'USA' }}</i>
+    </code>
+
+    <p class="bold">Использование переменных:</p>
+    <code class="code">
+      const name = 'Eugene';
+      const postsQty = 32;
+
+      const userProfile = {
+        name: name,
+        postsQty: postsQty,
+        hasSignedAgreement: false
+      }
+    </code>
+
+    <p class="bold">Сокращенный формат записи свойств:</p>
+    <code class="code">
+      const name = 'Eugene';
+      const postsQty = 32;
+
+      const userProfile = {
+        name,
+        postsQty,
+        hasSignedAgreement: false
+      }
+    </code>
+    <p>Сокращенные свойства рекомендуется размещать в начале объекта</p>
+  </section>
+
+  <section class="page__section">
+    <h5>Глобальные объекты</h5>
+  </section>
+</section>

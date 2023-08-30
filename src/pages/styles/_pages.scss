@@ -37,7 +37,7 @@
     // opacity: 0.8;
   }
 
-  .bold {
+  .bold, b {
     filter: contrast(1.3);
     @extend .text;
     font-weight: 600;
