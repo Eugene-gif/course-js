@@ -3,7 +3,8 @@
     Типы
   </h2>
   <section class="page__section">
-    <p class="bold underline">Тип переменной определяется типом присвоеного значения</p>
+    <p class="underline">Тип переменной определяется типом присвоеного
+      значения</p>
     <code class="code">
       const a = 10 <i>// number</i>
       const b = 'abc' <i>// string</i>
@@ -21,14 +22,103 @@
       <li>undefined</li>
       <li>symbol (символ)</li>
     </ol>
-    <p class="text"><span class="bold">null</span> - используется тогда, когда вы хотите явно указать, что у какой-либо переменной на данном этапе отсутствует значение.</p>
-    <p class="text"><span class="bold">undefined</span> - значение у той или иной переменной нету, его не существует, оно не определено.</p>
-    <p class="text">Разница между <span class="bold">null</span> и <span class="bold">undefined</span> в том, что null мы присваиваем сами, как-бы явно говоря, что сейчас у этой переменной нет значения, и возможно позже оно будет присвоено, но сейчас оно null. Undefined не нужно присваивать переменной, когда мы объявляем переменную при помощи let и не присваиваем новое значение, то значение этой переменной будет 'undefined' (т.е. неопределено).</p>
-    <p class="text"><span class="bold">symbol</span> - с помощью этого типа можно создавать уникальные значения, используется достаточно редко.</p>
+    <p class="text"><span class="bold">null</span> - используется тогда, когда
+      вы хотите явно указать, что у какой-либо переменной на данном этапе
+      отсутствует значение.</p>
+    <p class="text"><span class="bold">undefined</span> - значение у той или
+      иной переменной нету, его не существует, оно не определено.</p>
+    <p class="text">Разница между <span class="bold">null</span> и <span
+        class="bold">undefined</span> в том, что null мы присваиваем сами,
+      как-бы явно говоря, что сейчас у этой переменной нет значения, и возможно
+      позже оно будет присвоено, но сейчас оно null. Undefined не нужно
+      присваивать переменной, когда мы объявляем переменную при помощи let и не
+      присваиваем новое значение, то значение этой переменной будет 'undefined'
+      (т.е. неопределено).</p>
+    <p class="text"><span class="bold">symbol</span> - с помощью этого типа
+      можно создавать уникальные значения, используется достаточно редко.</p>
   </section>
 
   <section class="page__section">
     <h5>Ссылочный тип:</h5>
     <p class="text"><span class="bold">Object (объект)</span></p>
+    <p class="text underline">Ссылочный тип в JS только один, и он называется
+      объект</p>
+    <p class="text">Одна из особенностей в том, что на один объект могут
+      ссылаться сразу несколько переменных. Т.к. переменная содержит ссылку на
+      объект, а не сам объект. Т.е. несколько переменных могут ссылаться на один
+      объект в памяти. Используя разные переменные мы можем менять один и тот же
+      объект.</p>
+    <code class="code">
+      const objectA = {
+      a: 10,
+      b: true
+      }
+
+      const copyOfA = objectA; <i>// Объект остаётся в памяти в одном месте, а
+        ссылка на него копируется с одной переменной в другую переменную</i>
+
+      copyOfA.a = 20; <i>// objectA.a => 20</i>
+      <i>// Изменяя copyOfA мы изменяем и objectA, т.к. они являются ссылками на
+        один и тот же объект</i>
+
+      copyOfA.c = 'abc'; <i>// Добавление новых свойств в объект</i>
+      <i>// Исходный объект тоже изменится objectA.c => 'abc'</i>
+
+
+    </code>
+  </section>
+
+  <section class="page__section">
+    <h5>Динамическая типизация:</h5>
+
+    <p class="bold"> Пример статической типизации:</p>
+    <code class="code">
+      String a = 'abc'
+      int b = 10
+      b = 'xyz' <i>// Error</i>
+    </code>
+
+    <p class="bold">Пример динамической типизации:</p>
+    <code class="code">
+      let a = true <i>// Boolean</i>
+      a = 'abc' <i>// String</i>
+      a = 10 <i>// Number</i>
+    </code>
+    <p class="underline">JavaScript - это динамически типизируемый язык</p>
+    <p class="bold">Пример с функцией:</p>
+    <code class="code">
+      function a() {
+      console.log('Hey there');
+      }
+
+      a() <i>// 'Hey there'</i>
+
+      a = 10
+
+      a() <i>// Uncaught TypeError: a is not a function</i>
+      <i>// Чтобы предотвратить подобную ситуацию, нужно использовать 'const'
+        там, где это возможно.</i>
+    </code>
+
+    <p class="bold">Const для объявления переменных:</p>
+    <p>
+      <span class="bold">const</span> - позволяет предотвратить возможные проблемы, связанные с динамической типизацией.
+    </p>
+    <code class="code">
+      const a = () => {
+        console.log('Hey there');
+      }
+
+      a() <i>// 'Hey there'</i>
+      
+      a = 10 <i>// Uncaught TypeError: Assignment to constant variable.</i>
+
+      a() <i>// 'Выполнение кода не дойдёт до этой строки'</i>
+    </code>
+    <p class="bold underline">Правила работы с переменными:</p>
+    <ol class="list">
+      <li>Все переменные объявлять перед их использованием</li>
+      <li>Стараться использовать <span class="underline">const</span> везде, где это возможно</li>
+    </ol>
   </section>
 </section>
