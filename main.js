@@ -12,7 +12,7 @@ for(let i = 0; i < links.length; i++) {
 
 window.addEventListener('load', () => {
   loadPage(links, pages, setupTheme);
-  setTimeout(() => {
-    window.scrollTo(0, 0);
-  }, 30)
+  // setTimeout(() => {
+  //   window.scrollTo(0, 0);
+  // }, 30)
 });

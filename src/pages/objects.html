@@ -1,9 +1,9 @@
 <section class="container page _page" id="objects" data-page="objects">
   <h2>Объекты</h2>
   <section class="page__section">
-    <h5>Общее</h5>
+    <h4>Общее</h4>
     <p class="text"><b>Объект</b> - это набор свойств "имя: значение"</p>
-    
+
     <p class="bold">Структура и синтаксис:</p>
     <code class="code">
       const myCity = {
@@ -29,7 +29,7 @@
 
       myCity.city = 'Krasnodar';
 
-      console.log(myCity) 
+      console.log(myCity)
       <i>// {city: 'Krasnodar'}</i>
     </code>
 
@@ -40,11 +40,11 @@
       }
 
       myCity.popular = true;
-      console.log(myCity) 
+      console.log(myCity)
       <i>// {city: 'New York', popular: true}</i>
 
       myCity.country = 'Russia';
-      console.log(myCity) 
+      console.log(myCity)
       <i>// {city: 'New York', popular: true, country: 'Russia'}</i>
     </code>
 
@@ -57,7 +57,7 @@
       }
 
       delete myCity.country;
-      console.log(myCity); 
+      console.log(myCity);
       <i>// {city: 'New York', popular: true}</i>
     </code>
 
@@ -92,7 +92,7 @@
       <i>// true</i>
 
       delete myCity.info['isPopular'];
-      
+
       console.log(myCity);
       <i>// { city: 'New York', info: { country: 'USA' }}</i>
     </code>
@@ -124,6 +124,201 @@
   </section>
 
   <section class="page__section">
-    <h5>Глобальные объекты</h5>
+    <h4>Глобальные объекты</h4>
+    <p class="text"><b class="bold">window</b> - Веб браузеры</p>
+    <p class="text"><b class="bold">global</b> - Node.js</p>
+    <p class="text"><b class="bold">globalThis</b> - унифицированный глобальный
+      объект</p>
+    <p class="text"><b class="bold">console</b> - на самом деле является
+      свойством глобальных объектов window или global (window.console,
+      global.console)</p>
+    <p class="text">
+      <span class="underline">window.console.log('Hello') ===
+        console.log('Hello')</span>
+      <br>Аналогично и для объекта global Node.js
+    </p>
+  </section>
+
+  <section class="page__section">
+    <h4>Методы</h4>
+
+    <p class="text"><b class="bold">Метод</b> - это свойство объекта, которые
+      содержат функции. Соответствеено методы как и функции можно вызывать.</p>
+    <p class="bold">Пример метода и его вызов:</p>
+    <code class="code">
+      const myCity = {
+        city: 'New York',
+        cityGreeting: function () {
+          console.log('Greetings!!');
+        }
+      }
+
+      myCity.cityGreeting();
+      <i>// 'Greetings!!'</i>
+    </code>
+
+    <p class="bold">Сокращенная форма записи:</p>
+    <code class="code">
+      const myCity = {
+        city: 'New York',
+        cityGreeting() {
+          console.log('Greetings!!');
+        }
+      }
+
+      myCity.cityGreeting();
+      <i>// 'Greetings!!'</i>
+
+      myCity.city
+      <i>// Доступ к значению свойства</i>
+
+      myCity.cityGreeting()
+      <i>// Вызов метода</i>
+    </code>
+  </section>
+
+  <section class="page__section">
+    <h4>JSON</h4>
+    <p class="bold">JSON - JavaScript Object Notation</p>
+    <code class="code">
+      {
+        "userId": 1,
+        "id": 1,
+        "title": "Test title",
+        "status": {
+          "completed": false
+        }
+      }
+    </code>
+    <p class="text">По сути это формат обмена данными в интернете. JSON
+      передаётся в виде строки</p>
+
+    <p class="bold">Конвертация JSON в объект</p>
+    <code class="code">
+      JSON.parse()
+    </code>
+
+    <p class="bold">Конвертация объекта в JSON</p>
+    <code class="code">
+      JSON.stringify()
+    </code>
+  </section>
+
+  <section class="page__section">
+    <h4>Мутация в JavaScript</h4>
+    <p class="bold">Значения примитивных типов:</p>
+    <code class="code">
+      const a = 10;
+
+      let b = a;
+      <i>// Копирование значения(copy by value)</i>
+
+      b = 30;
+
+      console.log(a);
+      <i>// 10</i>
+
+      console.log(b);
+      <i>// 30</i>
+    </code>
+
+    <p class="bold">Значения ссылочного типа:</p>
+    <code class="code">
+      const person = {
+        name: 'Bob',
+        age: 21
+      };
+
+      person.age = 22;
+      person.isAdult = true;
+      <i>// Мутация объекта на который ссылается переменная "person"</i>
+
+      console.log(person.age);
+      <i>// 22</i>
+
+      console.log(person.isAdult);
+      <i>// true</i>
+    </code>
+
+    <p class="bold">Мутирование копий:</p>
+    <code class="code">
+      const person = {
+        name: 'Bob',
+        age: 25
+      };
+
+      const person2 = person;
+      <i>// Копирование ссылки(copy by reference)</i>
+
+      person2.age = 26;
+      person2.isAdult = true;
+
+      console.log(person.age);
+      <i>// 26</i>
+      <i>// Мутация также отразилась и на оригинальном объекте 'person'</i>
+
+      console.log(person.isAdult);
+      <i>// true</i>
+    </code>
+    <br>
+    <h4 class="bold">Как избежать мутаций:</h4>
+    <p class="text underline">Вариант 1</p>
+    <code class="code">
+      const person = {
+        name: 'Bob',
+        age: 25
+      };
+
+      const person2 = Object.assign({}, person);
+      <i>// Если у объекта есть вложенные объекты, то ссылки на них сохраняются</i>
+
+      person2.age = 26;
+
+      console.log(person2.age);
+      <i>// 26</i>
+
+      console.log(person.age);
+      <i>// 25</i>
+    </code>
+    <br>
+
+    <p class="text underline">Вариант 2</p>
+    <code class="code">
+      const person = {
+        name: 'Bob',
+        age: 25
+      };
+
+      const person2 = {... person}
+      <i>// Ссылки на вложенные объекты также сохраняются</i>
+
+      person2.name = 'Alice';
+
+      console.log(person2.name);
+      <i>// Alice</i>
+
+      console.log(person.name);
+      <i>// Bob</i>
+    </code>
+    <p>... - spread оператор, или оператор разделения объекта на свойства</p>
+    <br>
+    <p class="text underline">Вариант 3</p>
+    <code class="code">
+      const person = {
+        name: 'Bob',
+        age: 25
+      };
+
+      const person2 = JSON.parse(JSON.stringify(person));
+      <i>// Ссылки на вложенные объекты НЕ СОХРАНЯЮТСЯ, т.е. получается полностью новый объект с любой вложенностью. Если короче, то происходит глубокое клонирование объекта.</i>
+
+      person2.name = 'Alice';
+
+      console.log(person2.name);
+      <i>// Alice</i>
+
+      console.log(person.name);
+      <i>// Bob</i>
+    </code>
   </section>
 </section>
