@@ -23,6 +23,15 @@
     padding-left: 20px;
   }
 
+  ul {
+    list-style:disc;
+    list-style-position: inside;
+    li::marker {
+      content: '- ';
+    }
+  }
+
+
   .list {
     display: flex;
     flex-direction: column;
@@ -34,7 +43,6 @@
     margin-bottom: 10px;
     line-height: 1.4;
     font-weight: 400;
-    // opacity: 0.8;
   }
 
   .bold, b {

@@ -1,3 +1,80 @@
 <section class="container page _page" id="functions" data-page="functions">
   <h2 class="contacts__title">Функции</h2>
+  <p class="text"><b class="bold">Функция</b> - это блок кода, который можно выполнять многократно.</p><br>
+  <section class="page__section">
+    <p class="text">Пример:</p>
+    <code class="code">
+      let a = 5;
+      let b = 3;
+
+      let c;
+
+      c = a + b;
+      console.log(c);
+      <i>// 8</i>
+
+      a = 8;
+      b = 12;
+      
+      c = a + b;
+      console.log(c);
+      <i>// 20</i>
+    </code>
+    <br>
+    <p class="text">У примера выше есть повторяющиеся блоки кода, которые можно оптимизировать, т.е. вынести в функцию:</p>
+    <code class="code">
+      function sum(a, b) {
+        const c = a + b;
+        console.log(c);
+      }
+
+      sum(5, 3);
+      <i>// 8</i>
+
+      sum(8, 12);
+      <i>// 20</i>
+    </code>
+    <br>
+    <p class="bold">Функция может быть...</p>
+    <ul class="list">
+      <li>Именованной</li>
+      <li>Анонимной</li>
+      <li>Присвоена переменной</li>
+      <li>Аргументом при вызове другой функции</li>
+      <li>Значением свойства объекта(т.е. методом объекта)</li>
+    </ul>
+    <p class="text">Функция - это объект. В этом можно удостовериться передав функцию в метод дир объекта консоль: <b class="bold">console.dir(myFn)</b>. И попробовать обратиться к свойствам отображаемого объекта.</p>
+    <p>Функция возвращает <span class="underline">undefined</span> если нет инструкции <span class="underline">return</span>.</p>
+    <br>
+    <p class="bold">Вызов функции:</p>
+    <code class="code">
+      <i>// a, b - это параметры</i>
+      function myFn(a, b) {
+        let c;
+        a = a + 1;
+        c = a + b;
+        return c;
+      }
+
+      <i>// 10, 3 - это аргументы</i>
+      myFn(10, 3);
+      <i>// 14</i>
+    </code>
+    <p class="underline">Рассмотрим подробнее:</p>
+    <ol class="list">
+      <li>Параметрам 'a' и 'b' присваиваются значения 10 и 3</li>
+      <li>Объявляется переменная 'c'</li>
+      <li>Значение 'a' увеличивается на 1</li>
+      <li>Сумма значений 'a' и 'b' присваивается 'c'</li>
+      <li>Возвращается значение 'c'</li>
+    </ol>
+    <br>
+    <p class="bold">Самая короткая функция:</p>
+    <code class="code">
+      function myFn() {}
+
+      myFn();
+      <i>// undefined</i>
+    </code>
+  </section>
 </section>
