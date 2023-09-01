@@ -1,5 +1,5 @@
 <section class="container page _page" id="functions" data-page="functions">
-  <h2 class="contacts__title">Функции</h2>
+  <h2>Функции</h2>
   <p class="text"><b class="bold">Функция</b> - это блок кода, который можно выполнять многократно.</p><br>
   <section class="page__section">
     <p class="text">Пример:</p>
@@ -75,6 +75,196 @@
 
       myFn();
       <i>// undefined</i>
+    </code> 
+    <br>
+    <p class="bold">Передача значения по ссылке:</p>
+    <code class="code">
+      const personOne = {
+        name: 'Bob',
+        age: 21
+      }
+  
+      <i>// Функция мутирует внешний объект</i>
+      function increasePersonAge(person) {
+        person.age += 1;
+        return person;
+      }
+  
+      increasePersonAge(personOne);
+      <i>// Передача объекта по ссылке</i>
+  
+      console.log(personOne.age);
+      <i>// 22</i>
+    </code>
+    <p class="underline">Внутри функции не рекомендуется мутировать внешние объекты</p>
+    
+    <br>
+    <p class="bold">Создание копии объекта:</p>
+    <code class="code">
+      const personOne = {
+        name: 'Bob',
+        age: 21
+      }
+
+      function increasePersonAge(person) {
+        const updatedPerson = Object.assign({}, person);
+        updatedPerson.age += 1;
+        return updatedPerson;
+      }
+
+      const updatedPersonOne = increasePersonAge(personOne);
+      console.log(personOne.age);
+      <i>// 21</i>
+      console.log(updatedPersonOne);
+      <i>// 22</i>
+      <i>// Объект "personOne" не изменился</i>
     </code>
   </section>
+
+  <section class="page__section">
+    <h4>Колбэк функции</h4>
+    <code class="code">
+      function anotherFunction() {
+        <i>// Действия...</i>
+      }
+
+      <i>// В теле этой функции вызывается колбэк функция</i>
+      function fnWithCallback(callbackFunction) {
+        callbackFunction();
+      }
+
+      fnWithCallback(anotherFunction);
+    </code>
+    <br>
+    <p class="bold">Пример:</p>
+    <code class="code">
+      function printMyName() {
+        console.log('Eugene');
+      }
+
+      setTimeout(printMyName, 1000);
+      <i>// Функция "printMyName" будет вызвана через 1000 миллисекунд</i>
+    </code>
+    <br>
+    <p class="underline">Правила работы с функциями:</p>
+    <ol class="list">
+      <li>Называть функции исходя из выполняемых задач</li>
+      <li>Одна функция должна выполнять одну задачу</li>
+      <li>Не рекомендуется изменять внешние относительно функции переменные. Т.е. функция должна быть чистой - это означает, что функция работает только с переменными объявлеными внутри неё и не меняет внешние переменные.</li>
+    </ol>
+  </section>
+  
+  <br>
+
+  <section class="page__section">
+    <h4>Области видимости</h4>
+    <p class="text"><b class="bold">Область видимости</b> - определяет границы действия переменной.</p>
+    <p class="text">Область видимости может быть глобальной и локальной.</p>
+    <br>
+    <p class="bold">Пример действия глобальной и локальной области видимости:</p>
+    <code class="code">
+      let a;
+      let b;
+
+      function myFn() {
+        let b;
+        a = true;
+        b = 10;
+        consoe.log(b);
+        <i>// 10</i>
+      }
+
+      myFn();
+
+      console.log(a)
+      <i>// true</i>
+      console.log(b);
+      <i>// undefined</i>
+    </code>
+    <br>
+
+    <p class="bold">Цепочка областей видимости:</p>
+    <code class="code">
+      const a = 5;
+
+      function myFn() {
+        function innerFn() {
+          console.log(a);
+          <i>// 5</i>
+        }
+        innerFn();
+      }
+
+      myFn();
+    </code>
+    <br>
+    <hr>
+    <p class="bold">Жизненный цикл переменных:</p>
+    <code class="code">
+      let a;
+      let b;
+      <i>// 1</i>
+
+      function myFn() {
+        let b;
+        <i>// 3</i>
+        a = true;
+        b = 10;
+        <i>// 4</i>
+        consoe.log(b);
+        <i>// 5</i>
+      }
+
+      myFn();
+      <i>// 2</i>
+
+      console.log(a)
+      <i>// true</i>
+      console.log(b);
+      <i>// undefined</i>
+      <i>// 6</i>
+    </code>
+    <ol class="list">
+      <li>Объявление <span class="underline">b</span> в глобальной области видимости. Её значение <span class="underline">undefined</span></li>
+      <li>Вызов функции myFn</li>
+      <li>Объявление <span class="underline">b</span> в зоне видимости функции myFn</li>
+      <li>Объявлена ли <span class="underline">b</span> в рамках функции? Да, присвоение этой переменной <span class="underline">b</span> значения 10</li>
+      <li><span class="underline">b</span> имеет значение 10 в области видимости функции</li>
+      <li><span class="underline">b</span> всё так же имеет значение <span class="underline">undefined</span> в глобальной области видимости</li>
+    </ol>
+    <hr>
+    <br>
+    <b class="bold">Типы областей видимости:</b>
+    <ul class="list">
+      <li>Глобальная область видимости</li>
+      <li>Область видимости функции</li>
+      <li>Область видимости блока*</li>
+    </ul>
+    <p>* переменные, объявленные с помощью <span class="underline">let</span> или <span class="underline">const</span> внутри блока имеют область видимости, ограниченную этим блоком.</p>
+    <br>
+    <p class="bold">Необъявленные переменные:</p>
+    <p class="underline">Внимание! Плохой код, так делать не рекомендуется!</p>
+    <code class="code">
+      function myFn() {
+        a = true;
+        console.log(a);
+        <i>// true</i>
+      }
+
+      myFn();
+      console.log(a);
+      <i>// true</i>
+    </code>
+    <p class="text">Переменная <span class="underline">a</span> будет автоматически объявлена в глобальной облатси видимости</p>
+    <br>
+    <p class="underline">Правила работы с переменными:</p>
+    <ol class="list">
+      <li>Все переменные объявлять перед их использованием</li>
+      <li>Стараться использовать <span class="underline">const</span> везде, где это возможно</li>
+      <li>Внутри функций не изменять переменные с внешних областей видимости</li>
+    </ol>
+    <br>
+    <p class="bold">Строгий режим</p>
+  </section>
+
 </section>
