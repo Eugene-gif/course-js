@@ -7,8 +7,8 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Курс по JavaScript</title>
-  <script type="module" crossorigin src="/course-js/assets/index-f80db5f3.js"></script>
-  <link rel="stylesheet" href="/course-js/assets/index-514248dc.css">
+  <script type="module" crossorigin src="/course-js/assets/index-34d1b4e4.js"></script>
+  <link rel="stylesheet" href="/course-js/assets/index-ec6591bb.css">
 </head>
 
 <body>
@@ -176,6 +176,12 @@
           <li class="nav__item">
             <a href="#operators" data-link="operators">
               Операторы
+            </a>
+          </li>
+
+          <li class="nav__item">
+            <a href="#func-exp" data-link="func-exp">
+              Функциональные выражения
             </a>
           </li>
         </ul>
@@ -1037,7 +1043,8 @@
     <section class="container page _page" id="operators" data-page="operators">
   <h2 class="title">Операторы</h2>
   <section class="page__section">
-    <p class="text"><b class="bold">Оператор</b> - это встроенная в JS функция. Операторы бывают:</p>
+    <p class="text"><b class="bold">Оператор</b> - это встроенная в JS функция.
+      Операторы бывают:</p>
     <p class="bold">Арифметические:</p>
     <code class="code">
       +, -, *, /
@@ -1074,7 +1081,8 @@
 
   <section class="page__section">
     <h5>Унарные операторы</h5>
-    <p class="text">У унарных операторов всегда только один операнд(аргумент).</p>
+    <p class="text">У унарных операторов всегда только один операнд(аргумент).
+    </p>
     <code class="code">
       a++;
       +a;
@@ -1098,7 +1106,8 @@
   <br>
   <section class="page__section">
     <h5>Виды записи:</h5>
-    <p class="text"><b class="bold">Инфиксная</b> - в таком формате оператор находится между операндами</p>
+    <p class="text"><b class="bold">Инфиксная</b> - в таком формате оператор
+      находится между операндами</p>
     <code class="code">
       a = true;
       a + b;
@@ -1106,14 +1115,16 @@
       a || b;
       a > b;
     </code>
-    <p class="text"><b class="bold">Префиксная</b> - оператор находится перед операндом.</p>
+    <p class="text"><b class="bold">Префиксная</b> - оператор находится перед
+      операндом.</p>
     <code class="code">
       ++a;
       delete obj.a;
       typeof a;
     </code>
 
-    <p class="text"><b class="bold">Постфиксная запись</b> - оператор находится после операнда.</p>
+    <p class="text"><b class="bold">Постфиксная запись</b> - оператор находится
+      после операнда.</p>
     <code class="code">
       a++;
       myFunction();
@@ -1126,17 +1137,146 @@
       a + b * c / d - e;
       a + ((b * c) / (d - e));
       (((a + b) * c) / d) - e;
-      <i>// Менять приоритетность можно группировкой с помощью круглых скобок</i>
+      <i>// Менять приоритетность можно группировкой с помощью круглых
+        скобок</i>
     </code>
   </section>
 
   <section class="page__section">
     <h5>Логические операторы:</h5>
+    <p class="text"><b class="bold">!</b> - логическое отрицание(Не). Всегда
+      возвращает булево значение(либо true, либо false).</p>
+    <p class="text"><b class="bold">&&</b> - логическое "И"(И).</p>
+    <p class="text"><b class="bold">||</b> - логическое "ИЛИ"(ИЛИ).</p>
+    <p class="text"><span class="bold">&&, ||</span> - возвращают значение
+      одного из операндов.</p>
+
     <code class="code">
-      
+      <i>// Ложные значения:</i>
+      false
+      0
+      ''
+      undefined
+      null
+    </code>
+    <br>
+    <br>
+    <p class="text"><b class="bold">оператор !</b> чаще всего используется в
+      условных конструкциях.</p>
+    <p class="bold">Примеры с оператором !:</p>
+    <code class="code">
+      !10 <i>// false</i>
+      !0 <i>// true</i>
+      !'abc' <i>// false</i>
+      !'' <i>// true</i>
+      !true <i>// false</i>
+      !undefined <i>// true</i>
+    </code>
+
+    <p class="bold">Отрицание отрицания !!:</p>
+    <code class="code">
+      !!10 <i>// true</i>
+      !!0 <i>// false</i>
+      !!'abc' <i>// true</i>
+      !!'' <i>// false</i>
+      !!true <i>// true</i>
+      !!undefined <i>// false</i>
+    </code>
+    <p class="text"><b class="bold">оператор !!</b> - позволяет проверить
+      ложность значения</p>
+    <br>
+    <p class="text"><b class="bold">&&</b> - возвращает первое ложное
+      значение(Если хотя бы один операнд false, то всё выражение вернёт false)
+    </p>
+
+    <p class="text"><b class="bold">&&</b> - возвращает первое истинное
+      значение(Если хотя бы один операнд true, то всё выражение вернёт true)
+    </p>
+  </section>
+
+  <br>
+
+  <section class="page__section">
+    <h5>Оператор разделения объекта на свойства ...</h5>
+    <p class="text">Оператор <b class="bold underline">...</b></p>
+    <code class="code">
+      const button = {
+      width: 200,
+      text: 'Buy'
+      }
+
+      const redButton = {
+      ...button,
+      color: 'red',
+      }
+
+      console.table(redButton);
+      <i>// {width: 200, text: 'Buy', color: 'red'}</i>
+    </code>
+    <p class="text">Если у объекта <span class="underline">button</span> есть
+      свойство <span class="underline">color</span>, его значение будет
+      перезаписано.</p>
+    <p class="text">Если вы хотите перезаписывать те или иные свойства объекта,
+      то необходимо оператор <b class="bold underline">...</b> использовать в
+      начале нового объекта.</p>
+    <br>
+    <p class="bold">Объединение объектов с помощью <span
+        class="underline">...</span></p>
+    <code class="code">
+      const buttonInfo = {
+      text: 'Buy'
+      }
+
+      const buttonStyle = {
+      color: 'yellow',
+      width: 200,
+      height: 300
+      }
+
+      const button = {
+      ...buttonInfo,
+      ...buttonStyle
+      }
+
+      console.table(button);
     </code>
   </section>
 
+  <section class="page__section">
+    <h5>Конкатенация строк</h5>
+    <code class="code">
+      const hello = 'Hello';
+      const world = 'World';
+
+      const greeting = hello + ' ' + world;
+    </code>
+    <p class="bold">Шаблонные строки:</p>
+    <code class="code">
+      const hello = 'Hello';
+      const world = 'World';
+
+      const greeting = `${hello} ${world}`;
+
+      const myName = 'Eugene';
+      const myCity = 'Krasnodar';
+
+      const str = `Меня зовут ${myName} и я живу в ${myCity}`;
+      console.log(str);
+    </code>
+  </section>
+
+</section>
+    <section class="container page _page" id="func-exp" data-page="func-exp">
+  <h2 class="types__title">
+    Функциональные выражения
+  </h2>
+  <section class="page__section">
+    <p class="underline"></p>
+    <code class="code">
+    </code>
+  </section>
+
+  
 </section>
   </main>
   <footer class="footer">
