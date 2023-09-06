@@ -7,8 +7,8 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Курс по JavaScript</title>
-  <script type="module" crossorigin src="/course-js/assets/index-34d1b4e4.js"></script>
-  <link rel="stylesheet" href="/course-js/assets/index-ec6591bb.css">
+  <script type="module" crossorigin src="/course-js/assets/index-8d8d847c.js"></script>
+  <link rel="stylesheet" href="/course-js/assets/index-b1cfe505.css">
 </head>
 
 <body>
@@ -182,6 +182,12 @@
           <li class="nav__item">
             <a href="#func-exp" data-link="func-exp">
               Функциональные выражения
+            </a>
+          </li>
+
+          <li class="nav__item">
+            <a href="#instructions" data-link="instructions">
+              Инструкции
             </a>
           </li>
         </ul>
@@ -1273,10 +1279,214 @@
   <section class="page__section">
     <p class="underline"></p>
     <code class="code">
+      <i>// Объявленная функция</i>
+      function myFn(a, b) {
+        let c;
+        a = a + 1;
+        c = a + b;
+        return c;
+      }
+
+      <i>// Функциональное выражение</i>
+      function (a, b) {
+        let c;
+        a = a + 1;
+        c = a + b;
+        return c;
+      }
+    </code>
+    <p class="text">Функциональные выражения всегда <span
+        class="underline">анонимны</span></p>
+    <div class="table">
+      <table>
+        <tr>
+          <th></th>
+          <th>Объявленная функция</th>
+          <th>Функциональное выражение</th>
+        </tr>
+        <tr>
+          <td>Имеет имя</td>
+          <td class="yes">Да</td>
+          <td class="no">Нет</td>
+        </tr>
+        <tr>
+          <td>Можно использовать автономно</td>
+          <td class="yes">Да</td>
+          <td class="no">Нет</td>
+        </tr>
+        <tr>
+          <td>Можно присваивать переменной</td>
+          <td class="yes">Да</td>
+          <td class="yes">Да</td>
+        </tr>
+        <tr>
+          <td>Можно использовать как аргумент в вызове другой функции</td>
+          <td class="yes">Да</td>
+          <td class="yes">Да</td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <p class="bold">Присваивание функционального выражения переменной:</p>
+    <code class="code">
+      const myFunction = function(a, b) {
+        let c;
+        a = a + 1;
+        c = a + b;
+        return c;
+      }
+
+      myFunction(5, 3);
+      <i>// 9</i>
+    </code>
+    <br>
+    <p class="bold">Функциональное выражение в вызове другой функции:</p>
+    <code class="code">
+      setTimeout(function() {
+      console.log('Отложенное сообщение')
+      }, 1000)
+      // <i>// Отложенное сообщение будет выведено в консоль через 1000 мс(1
+        сек)</i>
+    </code>
+
+    <p class="bold">Стрелочные функции:</p>
+    <code class="code">
+      (a, b) => {
+        let c;
+        a = a + 1;
+        c = a + b;
+        return c;
+      }
+    </code>
+    <p class="text">Стрелочная функция - это выражение</p>
+    <p class="text">Стрелочные функции - всегда анонимные(нет имени).</p>
+    <br>
+    <p class="bold">Имя стрелочной функции:</p>
+    <code class="code">
+      const myFunction = (a, b) => {
+        let c;
+        a = a + 1;
+        c = a + b;
+        return c;
+      }
+
+      myFunction(5, 3);
+      <i>// 9</i>
+    </code>
+    <p class="text"><span class="underline">Почему не стоит использовать
+        традиционную функцию, а лучше присваивать функцию или функциональное
+        выражение переменной?</span> <br>
+      <b class="bold">Ответ:</b> Всё дело в том, что если объявлять переменную
+      при помощи ключевого слова <span class="underline">const</span>, то мы не
+      можем присвоить новое значение этой переменной. Т.е., по сути мы
+      предотвращаем ситуацию присвоения нового значения переменной, которая
+      содержит функцию.
+    </p>
+    <p class="bold">Стрелочная функция в вызове другой функции:</p>
+    <code class="code">
+      setTimeout(() => {
+        console.log('Выведется через 1 секунду')
+      }, 1000);
+    </code>
+    <p class="bold">Сокращения в стрелочных функциях:</p>
+    <code class="code">
+      <i>// Если один параметр, то круглые скобки можно опустить</i>
+      a => {
+        <i>// Тело функции</i>
+      }
+      
+      <i>// Фигурные скобки можно опустить, если тело функции состоит из одного выражения</i>
+      (a, b) => a + b
+      <i>// В этом случае стрелочная функция неявно возвращает результат выражения</i>
     </code>
   </section>
 
-  
+  <br>
+
+  <section class="page__section">
+    <h4>Значения параметров функции по умолчанию:</h4>
+    <p class="bold">Пример 1</p>
+    <code class="code">
+      function multByFactor(value, multiplier = 1) {
+        return value * multiplier;
+      }
+
+      multByFactor(10, 2)
+      <i>// 20</i>
+      multByFactor(5)
+      <i>// 5</i>
+    </code>
+    <br>
+    <p class="bold">Пример 2</p>
+    <code class="code">
+      <i>// Значения по умолчанию вычисляются в момент вызова функции</i>
+      const newPost = (post, addedAt = Date()) => ({
+        ...post, 
+        addedAt
+      });
+
+      const firstPost = {
+        id: 1,
+        author: 'Eugene'
+      }
+
+      newPost(firstPost);
+    </code>
+  </section>
+
+  <br>
+
+  <section class="page__section">
+    <h4>Обработка ошибок:</h4>
+    <p class="bold">Пример необработанной непойманной ошибки(uncaught error):</p>
+    <code class="code">
+      const fnWithError = () => {
+        throw new Error('Some error');
+      }
+
+      fnWithError(); <i>// Выполнение кода остановится после появления Uncaught ошибки</i>
+
+      console.log('Continue...');
+    </code>
+    <br>
+    <p class="bold">Блок try/catch</p>
+    <code class="code">
+      try {
+        <i>// Выполнение блока кода</i>
+      } catch (error) {
+        <i>// Этот блок выполнится в случае возникновения ошибок в блоке try</i>
+      }
+    </code>
+    <p class="bold">Пример оборачивания кода в try/catch</p>
+    <code class="code">
+      const fnWithError = () => {
+        throw new Error('Some error')
+      }
+      
+      try {
+        fnWithError();
+      } catch(error) {
+        console.error(error);
+        console.log(error.message);
+      }
+
+      console.log('Continue...'); <i>// Выполнение кода продолжится</i>
+    </code>
+  </section>
+</section>
+    <section class="container page _page" id="instructions" data-page="instructions">
+  <h2>
+    Инструкции
+  </h2>
+  <section class="page__section">
+    <h4>Пример заголовка</h4>
+    <code class="code">
+      <i>// Пример кода</i>
+
+      const instructions = 'Инструкции';
+      console.log(instructions);
+    </code>
+  </section>
 </section>
   </main>
   <footer class="footer">
