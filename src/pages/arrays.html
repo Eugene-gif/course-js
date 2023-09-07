@@ -1,0 +1,162 @@
+<section class="container page _page" id="arrays" data-page="arrays">
+  <h2>
+    Массивы
+  </h2>
+
+  <section class="page__section">
+    <p class="text underline"><b class="bold">Массив</b> - это объект с
+      цифровыми именами свойств</p>
+    <br>
+    <p class="bold">Формат записи массивов:</p>
+    <code class="code">
+      const myArray = [1, 2, 3];
+      console.log(myArray); <i>// [1, 2, 3]</i>
+
+      const myArray2 = new Array(1, 2, 3);
+      console.log(myArray2); <i>// [1, 2, 3]</i>
+    </code>
+    <br>
+    <p class="bold">Массив VS объект</p>
+    <code class="code">
+      const myObject = {
+      0: 1,
+      1: 2,
+      2: 3,
+      length: 3
+      }
+
+      const myArray = [1, 2, 3];
+
+      console.log(myObject); <i>// {0: 1, 1: 2, 2: 3, length: 3}</i>
+      console.log(myArray); <i>// [1, 2, 3]</i>
+    </code>
+    <div class="img">
+      <img src="src/img/images/arrays.webp" alt="array vs object">
+    </div>
+    <br>
+    <p class="bold">Чтение значений массива:</p>
+    <code class="code">
+      const myArray = [1, true, 'a'];
+      console.log(myArray); <i>// [1, true, 'a']</i>
+
+      console.log(myArray[0]); <i>// 1</i>
+      console.log(myArray[1]); <i>// true</i>
+
+      console.log(myArray.length); <i>// 3</i>
+    </code>
+    <p class="underline">Порядок элементов в массиве ВАЖЕН, т.к. каждый элемент
+      в массиве имеет свой порядковый номер - он называется индексом.</p>
+    <br>
+    <p class="bold">Длина массива:</p>
+    <code class="code">
+      const myArray = [1, 2, 3, 4];
+      console.log(myArray); <i>// [1, 2, 3, 4]</i>
+      console.log(myArray.length); <i>// 4</i>
+
+      myArray[2] = 'abc';
+
+      console.log(myArray); <i>// [1, 2, 'abc', 4]</i>
+      console.log(myArray[2]); <i>// 'abc'</i>
+
+      myArray[4] = true;
+
+      console.log(myArray); <i>// [1, 2, 'abc', 4, true]</i>
+      console.log(myArray.length); <i>// 5</i>
+    </code>
+    <br>
+    <h4 class="bold">Методы массивов:</h4>
+    <p class="underline">Методы массива - называются функциями высшего порядка в
+      массивах, либо функциями прототипов, либо методами прототипов.</p>
+    <div class="img">
+      <img src="src/img/images/arrays-1.webp" alt="Функции высшего порядка">
+    </div>
+    <br>
+    <p class="bold">Метод push:</p>
+    <p class="underline">Добавляет элемент в конец массива</p>
+    <code class="code">
+      const myArray = [1, 2, 3];
+      console.log(myArray); // <i>[1, 2, 3]</i>
+
+      myArray.push(4)
+      console.log(myArray); // <i>[1, 2, 3, 4]</i>
+
+      myArray.push(true);
+      console.log(myArray); // <i>[1, 2, 3, 4, true]</i>
+    </code>
+    <br>
+    <p class="bold">Метод pop:</p>
+    <p class="underline">Удаляет последний элемент массива и возвращает его</p>
+    <code class="code">
+      const myArray = [1, 2, 3];
+      console.log(myArray); // <i>[1, 2, 3]</i>
+
+      myArray.pop();
+      console.log(myArray); // <i>[1, 2]</i>
+
+      const removedElement = myArray.pop(); // <i>Метод pop возвращает удалённый
+        элемент массива, соответственно его можно присвоить переменной</i>
+      console.log(myArray); // <i>[1]</i>
+      console.log(removedElement); // <i>2</i>
+    </code>
+    <br>
+    <p class="bold">Метод unshift:</p>
+    <p class="underline">Добавляет элемент в начало массива</p>
+    <p class="text">Используется редко, т.к. сдвигает индексы элементов массива.
+    </p>
+
+    <code class="code">
+      const myArray = [1, 2, 3];
+      console.log(myArray); // <i>[1, 2, 3]</i>
+
+      myArray.unshift(true);
+      console.log(myArray); // <i>[true, 1, 2, 3]</i>
+
+      myArray.unshift('abc');
+      console.log(myArray);
+    </code>
+    <br>
+    <p class="bold">Метод shift:</p>
+    <p class="underline">Удаляет первый элемент массива и возвращает его</p>
+    <p class="text">Тоже сдвигает индексы у элементов массива.</p>
+
+    <code class="code">
+      const myArray = [1, 2, 3];
+      console.log(myArray); // <i>[1, 2, 3]</i>
+
+      myArray.shift();
+      console.log(myArray); // <i>[2, 3]</i>
+
+      const removedElement = myArray.shift();
+
+      console.log(myArray); // <i>[3]</i>
+      console.log(removedElement); // <i>2</i>
+    </code>
+    <p class="text">Нужно учитывать, что все эти методы: push, pop,
+      unshift, shift - мутируют, т.е. изменяют оригинальный массив.</p>
+
+      <br>
+      <p class="bold">Метод forEach:</p>
+      <p class="underline">Перебирает все элементы массива, и для каждого элемента массива вызывает callback-функцию, в которую параметром передаётся значение определённого элемента массива.</p>
+  
+      <code class="code">
+        const myArray = [1, 2, 3];
+        console.log(myArray); // <i>[1, 2, 3]</i>
+  
+        myArray.forEach(el => console.log(el * 2));
+        console.log(myArray); // <i>[1, 2, 3] - оригинальный массив не изменился.</i>
+      </code>
+
+      <br>
+      <p class="bold">Метод map:</p>
+      <p class="underline">Этот метод, как и forEach - перебирает массив и для каждого элемента вызывает callback-функцию, но в отличие от forEach он возвращает новый массив.</p>
+  
+      <code class="code">
+        const myArray = [1, 2, 3];
+        console.log(myArray); // <i>[1, 2, 3]</i>
+  
+        const newArray = myArray.map(el => el * 3);
+        console.log(newArray); // <i>[3, 6, 9]</i>
+        console.log(myArray); // <i>[1, 2, 3] - Оригинальный массив не изменился</i>
+      </code>
+  </section>
+</section>

@@ -1,14 +1,73 @@
-<section class="container page _page" id="instructions" data-page="instructions">
+<section class="container page _page" id="instructions"
+  data-page="instructions">
   <h2>
     Инструкции
   </h2>
   <section class="page__section">
-    <h4>Пример заголовка</h4>
+    <p class="text">
+      <span class="bold">Выражение</span> - возвращает значение. <br>
+      <span class="bold">Инструкция</span> - не возвращает значение, она
+      выполняет определённые действия. <br>
+      <span class="underline">Выражение может быть инструкцией.</span>
+    </p>
+    <br>
+    <p class="bold">Примеры инструкций:</p>
     <code class="code">
-      <i>// Пример кода</i>
+      let a;
 
-      const instructions = 'Инструкции';
-      console.log(instructions);
+      const b = 5;
+
+      if(a > b) {
+      console.log('a is larger');
+      }
+
+      for (let i = 0; i &#60; 5; i++) {
+      console.log(i);
+      }
+      <i>// После закрывающей фигурной скобки не требуется точка с запятой</i>
     </code>
+    <p class="underline">Инструкция обычно заканчивается точкой с запятой. <br>
+      Исключение: Точка с запятой не требуется после блока инструкций.
+    </p>
+    <br>
+    <p class="bold">Примеры выражений-инструкций:</p>
+    <code class="code">
+      'abc';
+
+      a = a + 3;
+
+      c = a + b;
+
+      d = 'Good' + 'Evening';
+
+      myFunc(c, d);
+
+      console.log('Hey nigers!');
+      <i>// После закрывающей фигурной скобки не требуется точка с запятой</i>
+    </code>
+    <p class="underline">Инструкция не может быть трансформирована в выражение.
+    </p>
+    <br>
+    <p class="bold">Как отличить выражение от инструкций?</p>
+    <p class="underline">Выражения могут быть использованы как аргументы в
+      вызовах функций.<br>Соответственно инструкции не могут быть использованы
+      как аргументы в вызовах функций.
+    </p>
+    <code class="code">
+      function myFn(a) {
+        console.log(a);
+      }
+
+      const b = true;
+      let c = 10;
+
+      myFn(2 + 3); <i>// 5</i>
+      myFn(b); <i>// true</i>
+      myFn(c = c + 1); <i>// 11</i>
+      myFn(c = c + 1;) <i>// Uncaught SyntaxError; Точка с запятой конвертирует выражение в инструкцию и мы получаем ошибку.</i>
+      myFn(let d) <i>// Uncaught SyntaxError</i>
+    </code>
+    <p class="underline">Если вы хотите проверить что есть инструкция, а что выражение, то можно передать аргументом то, что вы хотите проверить в любую функцию. Инструкцию нельзя передать аргументом в вызов функции, поэтому будет ошибка. Выражение - можно, оно всегда возвращает значение.</p>
+
   </section>
 </section>

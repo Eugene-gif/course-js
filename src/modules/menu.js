@@ -6,6 +6,7 @@ export function toggleMenu() {
   overlay.classList.toggle('_show');
   nav.classList.toggle('_show');
   document.body.classList.toggle('_lock');
+  nav.querySelector('._active a').focus();
 }
 
 export function closeMenu() {
