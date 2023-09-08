@@ -1725,9 +1725,41 @@
     Деструктуризация
   </h2>
   <section class="page__section">
-    <h4>Пример заголовка</h4>
+    <p class="bold">Деструктуризация объектов:</p>
     <code class="code">
+      const userProfile = {
+        name: 'Eugene',
+        commentsQty: 25,
+        hasSignedAgreement: false,
+      }
+
+      const { name, commentsQty } = userProfile;
+      const { hasSignedAgreement } = userProfile;
+      // <i>Эти два выражения в примере равносильны этому одному: const { name, commentsQty, hasSignedAgreement } = userProfile; </i>
+
+      console.log(name); // <i>Eugene</i>
+      console.log(commentsQty); // <i>25</i>
     </code>
+    <p class="text">Объявление новых переменных и присваивание значений на основе значений свойств объекта</p>
+    <p class="text">Эти два выражения в примере равносильны этому одному: 
+      <span class="underline">
+        const { name, commentsQty, hasSignedAgreement } = userProfile;
+      </span>
+    </p>
+    <br> 
+    <p class="bold">Деструктуризация массивов:</p>
+    <code class="code">
+      const fruits = ['Apple', 'Banana', 'Cherry'];
+
+      const [fruitOne, fruitTwo] = fruits;
+
+      console.log(fruitOne); // <i>Apple</i>
+      console.log(fruitTwo); // <i>Banana</i>
+    </code>
+    
+    <p class="underline">
+      При деструктуризации массива важен порядок объявляемых переменных, при деструктуризации объекта он неважен
+    </p>
   </section>
 </section>
   </main>
