@@ -38,5 +38,24 @@
     <p class="underline">
       При деструктуризации массива важен порядок объявляемых переменных, при деструктуризации объекта он неважен
     </p>
+    <br>
+    <p class="bold">Деструктуризация в функциях</p>
+    <code class="code">
+      const userProfile = {
+        name: 'Eugene',
+        commentsQty: 23,
+        hasSignedAgreement: false,
+      }
+
+      const userInfo = ({name, commentsQty}) => {
+        if(!commentsQty) {
+          return `User ${name} has no comments`;
+        }
+
+        return `User ${name} has ${commentsQty} comments`;
+      }
+
+      userInfo(userProfile); //<i>'User Eugene has 1 comments'</i>
+    </code>
   </section>
 </section>
