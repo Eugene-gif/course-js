@@ -202,6 +202,12 @@
               Деструктуризация
             </a>
           </li>
+
+          <li class="nav__item">
+            <a href="#conditional-instructions" data-link="conditional-instructions">
+              Условные инструкции
+            </a>
+          </li>
         </ul>
       </nav>
 
@@ -1760,6 +1766,212 @@
     <p class="underline">
       При деструктуризации массива важен порядок объявляемых переменных, при деструктуризации объекта он неважен
     </p>
+    <br>
+    <p class="bold">Деструктуризация в функциях</p>
+    <code class="code">
+      const userProfile = {
+        name: 'Eugene',
+        commentsQty: 23,
+        hasSignedAgreement: false,
+      }
+
+      const userInfo = ({name, commentsQty}) => {
+        if(!commentsQty) {
+          return `User ${name} has no comments`;
+        }
+
+        return `User ${name} has ${commentsQty} comments`;
+      }
+
+      userInfo(userProfile); //<i>'User Eugene has 1 comments'</i>
+    </code>
+  </section>
+</section>
+    <section class="container page _page" id="conditional-instructions" data-page="conditional-instructions">
+  <h2>
+    Условные инструкции
+  </h2>
+  <section class="page__section">
+    <h3>Виды условных инструкций:</h3>
+    <ol class="list">
+      <li>if</li>
+      <li>if ... else</li>
+      <li>switch</li>
+      <li>тернарный оператор</li>
+    </ol>
+    <br>
+    <h5>Инструкция if:</h5>
+    <code class="code">
+      if(Условие) {
+        // <i>Блок кода, выполняемый однократно, если Условие правдиво</i>
+      }
+    </code>
+    <br>
+    <p class="bold">Пример if:</p>
+    <code class="code">
+      let val = 10;
+
+      if(val > 5) {
+        val += 20; 
+      }
+      
+      console.log(val); // <i>30</i>
+    </code>
+    <br>
+    <p class="bold">Пример if с оператором отрицания:</p>
+    <code class="code">
+      const person = {
+        age: 30, 
+      }
+
+      if(!person.name) { 
+        console.log('Имя не указано'); 
+        // <i>Другие действия в случае, если свойства "name" у объекта "person" нету</i>
+      }
+    </code>
+    <br>
+    <h5 class="bold">Пример инструкции if else:</h5>
+    <code class="code">
+      if(Условие) { 
+        // <i>Блок кода, выполняемый однократно, если Условие правдиво</i>
+      } else {
+        // <i>Блок кода, выполняемый однократно, если Условие ложно</i>
+      }
+    </code>
+    <br>
+    <p class="bold">Пример if else:</p>
+    <code class="code">
+      let val = 10;
+
+      if(val &#60; 5) {
+        val += 20;
+      } else {
+        val -= 20;
+      }
+
+      console.log(val); // <i>-10</i> 
+    </code>
+    <br>
+    <p class="bold">Инструкция if else if:</p>
+    <code class="code">
+      if(Условие 1) {
+        // <i>Блок кода, выполняемый однократно, если Условие 1 правдиво</i>
+      } else if(Условие 2) {
+        // <i>Блок кода, выполняемый однократно, если Условие 2 правдиво</i>
+      } else {
+        // <i>Блок кода, выполняемый однократно, если предыдущие условия ложны</i>
+      }
+    </code>
+    <br>
+    <p class="bold">Предпочтительный формат if:</p>
+    <code class="code">
+      if(Условие 1) {
+        // <i>Блок кода, выполняемый однократно, если Условие 1 правдиво</i>
+      } 
+
+      if(Условие 2) {
+        // <i>Блок кода, выполняемый однократно, если Условие 2 правдиво</i>
+      }
+      
+      if(Условие 3) {
+        // <i>Блок кода, выполняемый однократно, если Условие 3 правдиво</i>
+      }
+    </code>
+    <br>
+    <p>Разница между двумя форматами написания:</p>
+    <code class="code">
+      const age = 25;
+      // <i>Первый формат:</i>
+      if(age > 18) {
+        console.log('Is adult');
+      } else if(age >= 12) {
+        console.log('Is teenager');
+      } else {
+        console.log('Is child');
+      }
+      <i>// В данном случае он учитывает все предыдущие условия и выполняет нужное</i>
+
+      const age = 25;
+      // <i>Второй формат:</i>
+      if(age > 18) {
+        console.log('Is adult');
+      } 
+      
+      if(age >= 12) {
+        console.log('Is teenager');
+      } 
+      
+      if(age &#60; 12) {
+        console.log('Is child');
+      }
+      // <i> В этом формате выполнятся два варианта условия и (age > 18) и (age >= 12) т.к. они оба правдивы </i>
+    </code>
+    <p class="text">Чтобы выполнилось только одно условие во втором варианте написание, нужно учесть предыдущее условие и дописать <span class="underline">(age >= 12 && age =&#60; 18)</span></p>
+    <br>
+    <p class="bold">Использование if в функциях:</p>
+    <code class="code">
+      const sumPositiveNumbers = (a, b) => {
+        if(typeof a !== 'number' || typeof b !=='number') {
+          return 'One of the arguments is not a number';
+        }
+
+        if(a &#60;= 0 || b &#60;= 0) {
+          return 'Numbers are not positive';
+        }
+
+        return a + b;
+      }
+    </code>
+    <br>
+    <h5>Инструкция switch:</h5>
+    <p class="underline">Это по сути альтернатива инструкции if...else if...else</p>
+    <br>
+    <p class="bold">Синтаксис switch:</p>
+    <code class="code">
+      switch (Выражение) {
+        case A:
+          // <i>Действия если Выражение === A</i>
+          break;
+        case B:
+          // <i>Действия если Выражение === B</i>
+          break;
+        default:
+          // <i>Действия по умолчанию</i>
+      }
+    </code>
+    <br>
+    <p class="bold">Пример switch:</p>
+    <code class="code">
+      const month = 2;
+
+      switch (month) {
+        case 12:
+          console.log('Декабрь');
+          break;
+
+        case 1:
+          console.log('Январь');
+          break;
+
+        case 2:
+          console.log('Февраль');
+          break;
+
+        default:
+          console.log('Это не зимний месяц');
+      }
+    </code>
+    <br>
+    <h5>Тернарный оператор:</h5>
+    <p class="underline">У тернарного оператора три операнда.</p>
+    <p class="text">
+      Конструкция с тернарным оператором - это <span class="underline">выражение</span>, а выражение возварщает значение. Тернарный оператор можно использовать чтобы присвоить значение переменной.
+    </p>
+    <br>
+    <p class="bold">Синтаксис тернарного оператора:</p>
+    <code class="code">
+      Условие ? Выражение 1 : Выражение 2
+    </code>
   </section>
 </section>
   </main>
