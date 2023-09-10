@@ -182,6 +182,42 @@
     <p class="bold">Синтаксис тернарного оператора:</p>
     <code class="code">
       Условие ? Выражение 1 : Выражение 2
+
+      // <i>Рекомендуемая запись:</i>
+      Условие 
+        ? Выражение 1 
+        : Выражение 2
     </code>
+    <p class="text">В примере выше, если Условие правдиво, тогда возвращается результат Выражения 1, если Условие ложно, тогда возвращается результат Выражения 2.</p>
+    <br>
+    <p class="bold">Пример 1:</p>
+    <code class="code">
+      const value = 11;
+
+      value
+        ? console.log('Условие истинно')
+        : console.log('Условие ложно');
+    </code>
+    <br>
+    <p class="bold">Пример 2:</p>
+    <code class="code">
+      const value1 = 11;
+      const value2 = 25;
+
+      value1 && value2
+        ? myFunction1(value1, value2)
+        : myFunction2();
+    </code>
+    <br>
+    <p class="bold">Пример 2:</p>
+    <code class="code">
+      let value = 11;
+      console.log(value >= 0 ? value : -value); // <i>11</i>
+
+      value = -5;
+      const res = value >= 0 ? value : -value;
+      console.log(res); // <i>5</i>
+    </code>
+    <br>
   </section>
 </section>

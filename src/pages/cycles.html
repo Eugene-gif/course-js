@@ -1,0 +1,245 @@
+<section class="container page _page" id="cycles" data-page="cycles">
+  <h2>
+    Циклы
+  </h2>
+  <section class="page__section">
+    <p class="bold">Пример без цикла:</p>
+    <code class="code">
+      let i = 0;
+      console.log(i);
+      i++;
+      console.log(i);
+      i++;
+      console.log(i);
+      i++;
+      console.log(i);
+      i++;
+      console.log(i);
+      i++;
+      // <i>Повторяющиеся действия</i>
+      // <i>Аналогичные повторяющиеся действия придётся производить с объектами
+        или массивами, если мы не используем циклы</i>
+    </code>
+    <br>
+    <h5>Типы циклов:</h5>
+    <ol class="list">
+      <li>for</li>
+      <li>for ... in ...</li>
+      <li>while</li>
+      <li>do ... while</li>
+      <li>for ... of ...</li>
+    </ol>
+    <p class="text">Все циклы - это не выражения, а <span
+        class="underline">инструкци</span>.</p>
+    <br>
+    <h5>Цикл for:</h5>
+    <p class="bold">Синтаксис цикла for:</p>
+    <code class="code">
+      for (Начальная инструкция; Условие; Итерационное действие) {
+      // <i>Блок кода, выполняемый на каждой итерации</i>
+      }
+    </code>
+    <br>
+    <p class="bold">Пример:</p>
+    <code class="code">
+      for (let i = 0; i &#60; 5; i++) {
+        console.log(i);
+      }
+    </code>
+    <p class="text">Цикл for можно использовать для массивов, но это не
+      рекомендуется. Лучше использовать функции высшего порядка массивов -
+      "forEach", "map", "reduce", т.к. они по сути являются родными функциями
+      для работы с массивами. Поэтому не нужно усложнять.</p>
+    <br>
+    <p class="bold">Пример цикла for для массивов:</p>
+    <code class="code">
+      const myArray = ['first', 'second', 'third'];
+
+      for (let i = 0; i &#60; myArray.length; i++) {
+        console.log(myArray[i]);
+      }
+      // <i>'first'</i>
+      // <i>'second'</i>
+      // <i>'third'</i>
+    </code>
+    <br>
+    <p class="bold">Тот же пример на forEach:</p>
+    <code class="code">
+      const myArray = ['first', 'second', 'third'];
+
+      myArray.forEach((el, index) => {
+        console.log(el, index);
+      });
+      // <i>'first' 0</i>
+      // <i>'second' 1</i>
+      // <i>'third' 2</i>
+    </code>
+    <br>
+    <h5>Цикл while:</h5>
+    <p class="bold">Синтаксис цикла while:</p>
+    <code class="code">
+      while (Условие) {
+        // <i>Блок кода, выполняемый на каждой итерации, пока условие истинно</i>
+      }
+    </code>
+    <br>
+    <p class="bold">Пример цикла while:</p>
+    <code class="code">
+      let i = 0;
+
+      while (i &#60; 5) {
+        console.log(i);
+        i++;
+      }
+    </code>
+    <br>
+    <h5>Цикл do while:</h5>
+    <p class="bold">Синтаксис цикла do while:</p>
+    <code class="code">
+      do {
+       // <i>Блок кода, выполняемый на каждой итерации</i>
+      } while (Условие)
+    </code>
+    <p class="text">Цикл "do while" выполнится минимум один раз, потому что
+      инструкция начинается с ключевого слова "do" после которого идет
+      выполняемый Блок кода, и дальше после Блока кода находится условие. Т.е.
+      мы говорим делать что-то пока Условие правдиво, но Условие находится после
+      Блока кода, поэтому Блок кода выполнится минимум один раз.</p>
+    <p class="underline">Если цикл "while" может быть не выполнен ни разу, то
+      цикл "do{} while()" выполнится хотя бы один раз
+    </p>
+    <br>
+    <p class="bold">Пример 1</p>
+    <code class="code">
+      let i = 0;
+
+      do {
+        console.log(i);
+        i++;
+      } while (i &#60; 5)
+    </code>
+    <br>
+    <p class="bold">Пример 2</p>
+    <code class="code">
+      let i = 10;
+
+      do {
+        console.log(i);
+        i++;
+      } while (i &#60; 5)
+      // <i>Данный блок кода выполнится только один раз</i>
+    </code>
+    <br>
+    <h5>Цикл for in:</h5>
+    <p class="bold">Синтаксис цикла for in:</p>
+    <code class="code">
+      for (key in Object) {
+        // <i>Действия с каждым свойством объекта</i>
+        // <i>Значения свойства - Object[key]</i>
+      }
+    </code>
+    <p class="underline">Блок инструкций выполняется для каждого свойства объекта.</p>
+    <br>
+    <p class="bold">Пример 1</p>
+    <code class="code">
+      const myObject = {
+        x: 10,
+        y: true,
+        z: 'abc'
+      }
+
+      for (const key in myObject) {
+        console.log(key, myObject[key]);
+      }
+    </code>
+    <br>
+    <p class="bold">Пример 2</p>
+    <p class="text">Использование forEach для перебора свойств объекта</p>
+    <code class="code">
+      const myObject = {
+        x: 10,
+        y: true,
+        z: 'abc'
+      }
+
+      Object.keys(myObject).forEach(key => {
+        console.log(key, myObject[key]);
+      })
+    </code>
+    <br>
+    <p class="bold">
+      Пример с Object.keys(obj) и Object.values(obj):
+    </p>
+    <p class="text">
+      <span class="underline">Object.keys(obj)</span> - получение всех ключей объекта в виде массива. <br>
+      <span class="underline">Object.values(obj)</span> - получение всех значений свойств объекта в виде массива.
+    </p>
+    <code class="code">
+      const myObject = {
+        x: 10,
+        y: true,
+        z: 'abc'
+      }
+
+      const arrKeys = Object.keys(myObject);
+      const arrValues = Object.values(myObject);
+
+      console.log(arrKeys); // <i>['x', 'y', 'z']</i>
+      console.log(arrValues); // <i>[10, true, 'abc']</i>
+    </code>
+    <br>
+    <p class="bold">Пример использования for in для массивов:</p>
+    <code class="code">
+      const myArray = [true, 10, 'abc', null];
+
+      for (const key in myArray) {
+        console.log(myArray[key]);
+      }
+    </code>
+    <br>
+    <h5>Цикл for of:</h5>
+    <p class="bold">Синтаксис цикла for of:</p>
+    <code class="code">
+      for (Element of Iterable) {
+        // <i>Действия с определённым элементом</i>
+      }
+      // <i>Iterable - любое значение или переменная по которой можно итерироваться, т.е. элементы которой можно перебирать</i>
+    </code>
+    <br>
+    <p class="bold">Пример for of для строк:</p>
+    <code class="code">
+      const myString = 'Hey';
+
+      for (const letter of myString ) {
+        console.log(letter);
+      }
+    </code>
+    <br>
+    <p class="bold">Пример for of для массивов:</p>
+    <code class="code">
+      const myArray = [true, 10, 'abc', null];
+
+      for (const el of myArray) {
+        console.log(el);
+      }
+    </code>
+    <p class="underline">Для массивов всегда лучше использовать forEach</p>
+    <br>
+    <p class="bold">for of не для объектов:</p>
+    <code class="code">
+      let myObj = {
+        x: 10, 
+        y: true,
+        z: 'abc'
+      }
+
+      for (const prop of myObj) {
+        console.log(prop);
+      }
+      // <i>Uncaught TypeError: myObj is not iterable</i>
+    </code>
+    <p class="text">Объект не является итерируемым элементом, поэтому применение цикла "for of" на объекте выдаст ошибку. <br>
+      <span class="underline">for of нельзя использовать для объектов.</span>
+    </p>
+  </section>
+</section>
