@@ -1,11 +1,78 @@
-<section class="container page _page" id="modules" data-page="modules">
+<section class="modules container page _page" id="modules" data-page="modules">
   <h2>
     Модули
   </h2>
   <section class="page__section">
-    <h4>Пример заголовка</h4>
+    <p class="text">Модули позволяют структурировать код.</p>
+    <div class="img">
+      <img src="src/img/images/modules-1.webp"
+        alt="Пример структуры файлов модулей">
+    </div>
+    <p class="text">Модули позволяют избегать дублирования блоков кода.</p>
+    <br>
+    <p class="bold">Синтаксис модулей:</p>
+    <p class="underline">export/import синтаксис появился в es6</p>
+    <div class="img">
+      <img src="src/img/images/modules-2.webp" alt="Пример синтаксиса модулей">
+    </div>
+    <br>
+    <p class="bold">Пример экспорта по умолчанию:</p>
     <code class="code">
-      
+      // <i>moduleOne.js</i>
+      const myName = () => {
+      console.log('Eugene');
+      }
+
+      export default myName;
     </code>
+    <code class="code">
+      // <i>moduleTwo.js</i>
+      import printMyName from './moduleOne.js';
+
+      printMyName();
+    </code>
+    <p class="underline">Названия переменных могут не совпадать - это
+      допускается при дефолтном экспорте</p>
+    <br>
+    <p class="text">Модули можно запускать и без index.html, для этого нужно в
+      нужной вам директории создать файл с расширением .mjs (example.mjs), и
+      проверить его вызвав через node.js. <br>
+      Вот как в примере таким образом: <span class="underline">node
+        ./src/modules/examples/example.mjs</span></p>
+    <br>
+    <p class="bold">Пример с несколькими экспортами:</p>
+    <p class="text">Здесь синтаксис только похож на синтаксис создания объектов,
+      но на самом деле это
+      <span class="underline">синтаксис - export/import, это не создание
+        объектов.</span>
+      <span class="underline">При множественном экспорте имена переменных должны
+        совпадать.</span>
+    </p>
+    <div class="img">
+      <img src="src/img/images/modules-3.webp" alt="Несколько экспортов">
+    </div>
+    <br>
+    <p class="bold">Переименование импортов:</p>
+    <div class="img">
+      <img src="src/img/images/modules-4.webp" alt="Переименование импортов">
+    </div>
+    <br>
+    <p class="underline">Node.js поддерживает es6 модули, начиная с версии 13
+    </p>
+    <p class="text">Также есть CommonJS модули, и их синтаксис немного
+      отличается от ES6 модулей. <br>
+      CommonJS используется для Javascript-кода в бэкенде, а ES6-модули — во
+      фронтенде. CommonJS использует ключевое слово exports для экспорта и
+      require для импорта, а ES6-модули используют export для экспорта и import
+      для импорта.
+    </p>
+    <br>
+    <h4>Правила работы с модулями:</h4>
+    <ol class="list">
+      <li>Модули должны быть одноцелевыми</li>
+      <li>Располагайте все <span class="underline">export</span> инструкции внизу файла</li>
+      <li>Располагайте все <span class="underline">import</span> инструкции сверху файла</li>
+      <li>По возможности используйте <span class="underline">export default</span></li>
+    </ol>
   </section>
 </section>

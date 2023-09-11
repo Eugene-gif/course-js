@@ -76,6 +76,7 @@
       font-size: 20px;
       color: var(--bg-text);
       transition: all .3s;
+      user-select: none;
 
       &:after {
         content: '';
@@ -94,6 +95,7 @@
     &__item._active {
       & a {
         color: var(--active);
+        pointer-events: none;
       }
 
       & a:after {
