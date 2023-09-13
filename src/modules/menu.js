@@ -27,7 +27,10 @@ document.addEventListener('keyup', (evt) => {
     toggleMenu();
     btn.checked = !btn.checked;
   }
-})
 
+  if (evt.code === 'KeyS' && (evt.shiftKey || evt.metaKey)) console.log('Пидарасина!');
+  // console.log('Код: ' + evt.code);
+  // console.log('Символ: ' + evt.key);
+})
 // export const toggleMenu = toggleMenu;
 // export const closeMenu = closeMenu;
