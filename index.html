@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Курс по JavaScript</title>
-  <script type="module" crossorigin src="/course-js/assets/index-7b62d5e7.js"></script>
+  <script type="module" crossorigin src="/course-js/assets/index-4b4526ab.js"></script>
   <link rel="stylesheet" href="/course-js/assets/index-3318075e.css">
 </head>
 
@@ -2355,11 +2355,74 @@
   <h2>
     Классы и прототипы
   </h2>
-  <section class="page__section">
-    <h4>Пример заголовка</h4>
-    <code class="code">
-    </code>
-  </section>
+  <br>
+  <p class="bold">Синтаксис классов появился в ES6:</p>
+  <code class="code">
+    class ...
+  </code>
+  <p class="text">Раньше, до появления синтаксиса классов в JS экземпляры объектов создавались с помощью функций.</p>
+  <p class="text"><b class="bold">Классы</b> позволяют создавать прототипы для объектов. 
+    <br>На основании прототипов создаются <b class="bold">экземпляры</b>.
+  <br>Каждый экземпляр может иметь свои собственные свойства и методы.
+  <br><b class="bold">Экземпляры</b> наследуют свойства и методы прототипов.</p>
+    <br>
+  <p class="bold">Пример синтаксиса класса:</p>
+  <code class="code">
+    class Comment {
+      constructor(text) {
+        this.text = text;
+        this.votesQty = 0;
+        // <i>Переменная this указывает на экземпляр класса.</i>
+      }
+
+      upvote() {
+        this.votesQty += 1;
+      }
+    }
+
+    // <i>Создание экземпляра объекта</i>
+    const firstComment = new Comment('First comment');
+  </code>
+  <br>
+  <p class="bold">Проверка принадлежности:</p>
+  <code class="code">
+    class Comment {
+      constructor(text) {
+        this.text = text;
+        this.votesQty = 0;
+      }
+
+      upvote() {
+        this.votesQty += 1;
+      }
+    }
+
+    const firtsComment = new Comment('First comment');
+
+    firstComment instanceof Comment; // <i>true</i>
+    firstComment instanceof Object; // <i>true</i>
+  </code>
+  <br>
+  <p class="bold">Вызов методов:</p>
+  <code class="code">
+    class Comment {
+      constructor(text) {
+        this.text = text;
+        this.votesQty = 0;
+      }
+
+      upvote() {
+        this.votesQty += 1;
+      }
+    }
+
+    const firtsComment = new Comment('First comment');
+
+    firstComment.upvote();
+    console.log(firstComment.votesQty); // <i>1</i>
+    firstComment.upvote();
+    console.log(firstComment.votesQty); // <i>2</i>
+  </code>
 </section>
   </main>
   <footer class="footer">
