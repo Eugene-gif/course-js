@@ -70,4 +70,45 @@
     firstComment.upvote();
     console.log(firstComment.votesQty); // <i>2</i>
   </code>
+  <br>
+  <code class="code">
+    Comment.prototype.constructor === Comment // <i>true</i>
+  </code>
+  <br>
+  <p class="underline">Объекты не наследуют методы массивов, также, как и массивы не наследуют методы объектов.</p>
+  <br>
+  <p class="bold">Проверка принадлежности свойств экземпляру объекта:</p>
+  <code class="code">
+    const firstComment = new Comment('First comment');
+
+    firstComment.hasOwnProperty('text'); // <i>true</i>
+    firstComment.hasOwnProperty('votesQty'); // <i>true</i>
+    firstComment.hasOwnProperty('upvote'); // <i>false</i>
+    firstComment.hasOwnProperty('hasOwnProperty'); // <i>false</i>
+  </code>
+  //<p class="text"><span class="underline">hasOwnProperty</span> - проверяет есть ли собственное сввойство у объекта. В примере выше проверка "upvote" выдаст "false", потому что "upvote" не является методом конкретного объекта "firstComment", а он наследуется от родительского класса "Comment".</p>
+  <br>
+  <p class="bold">Создание нескольких экземпляров:</p>
+  <code class="code">
+    class Comment {
+      constructor(text) {
+        this.text = text;
+        this.votesQty = 0;
+      }
+
+      upvote() {
+        this.votesQty += 1;
+      }
+    }
+
+    const firstComment = new Comment('First comment');
+    const secondComment = new Comment('Second comment');
+    const thirdComment = new Comment('Third comment');
+  </code>
+  <p class="text"><span class="underline">firstComment, secondComment, thirdComment</span> - это разные объекты с разными собственными свойствами.</p>
+  <br>
+  <p class="bold">Статические методы:</p>
+    <div class="img">
+      <img src="src/img/images/classes-1.webp" alt="Статические методы">
+    </div>
 </section>
