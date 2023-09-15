@@ -2,9 +2,49 @@
   <h2>
     Промисы
   </h2>
-  <section class="page__section">
-    <h4>Пример заголовка</h4>
-    <code class="code">
-    </code>
-  </section>
+  <p class="underline">Промисы позволяют обрабатывать отложенные во времени
+    события.</p>
+  <p class="text"><b class="bold">Промис</b> - это обещание предоставить
+    результат позже.</p>
+  <p class="text">Промис может вернуть ошибку, если результат предоставить
+    невозможно.</p>
+  <p class="underline">Промис возвращает либо результат, либо ошибку, третьего
+    не дано.</p>
+  <br>
+  <p class="bold">Состояния промиса:</p>
+  <div class="img">
+    <img src="src/img/images/promises-1.webp" alt="Состояние промиса">
+  </div>
+  <p class="text">
+    Когда промис только создаётся у него будет состояние "ожидание", т.е. мы ожидаем - либо результата, либо ошибку. <br>
+    Когда промис вернул какой-то результат, он считается исполненым, т.е. промис "исполнен", и результатом его может быть какой-то объект с данными или массив документов с базы данных, в любом случае это состояние называется "испольнен". <br>
+    "Отклонен" - это третье состояние промиса при возникновении ошибки.
+  </p>
+  <br>
+  <p class="bold">Создание промиса:</p>
+  <code class="code none">
+    const myPromise = new Promise((resolve, reject) => {
+      // <i>Выполнение асинхронных действий</i>
+      // <i>Внутри этой функции нужно в результате вызвать одну из функций resolve или reject</i>
+    });
+  </code>
+  <div class="img">
+    <img src="src/img/images/promises-2.webp" alt="Создание промиса">
+  </div>
+  <br>
+  <p class="bold">Получение результата промиса:</p>
+  <div class="img">
+    <img src="src/img/images/promises-3.webp" alt="Получение результата промиса">
+  </div>
+  <br>
+  <p class="bold">Получение данных с помощью Fetch API:</p>
+  <div class="img">
+    <img src="src/img/images/promises-4.webp" alt="Пример">
+  </div>
+  <code class="code none">
+    fetch('https://jsonplaceholder.typicode.com/todos')
+      .then(res => res.json())
+      .then(json => console.log(json))
+      .catch(err => console.error(err))
+  </code>
 </section>
