@@ -226,6 +226,12 @@
               Классы и прототипы
             </a>
           </li>
+
+          <li class="nav__item">
+            <a href="#promises" data-link="promises">
+              Промисы
+            </a>
+          </li>
         </ul>
       </nav>
 
@@ -2401,6 +2407,7 @@
 
     firstComment instanceof Comment; // <i>true</i>
     firstComment instanceof Object; // <i>true</i>
+    firstComment instanceof Array; // <i>false</i>
   </code>
   <br>
   <p class="bold">Вызов методов:</p>
@@ -2479,6 +2486,29 @@
     </div>
     <br>
     <h3>Что же такое прототип?</h3>
+    <p class="text">У каждого экземпляра того или иного класса есть скрытое свойство "__proto__". Благодаря ему создаётся вся цепочка прототипов. И можно проверить, что свойство "prototype" конкретного класса будет равно свойству "__proto__" экземпляра этого класса.</p>
+    <div class="img">
+      <img src="/course-js/assets/classes-4-69a2a139.webp" alt="Пример">
+    </div>
+    <p class="text"><span class="bold">Прототип</span> - это объект, и в этом объекте находятся такие методы как конструктор и другие методы, которые вы определили в конкретном классе.</p>
+    <p class="underline">Это всё создано для того, чтобы создать видимость, что JS - это объектно-ориентированный язык программрования, хотя на самом деле это не так. Но, благодаря прототипам и цепочке прототипов, которые являются простыми объектами на самом деле, мы создаём возможность наследования свойств и методов.</p>
+    <br>
+    <p class="bold">
+      Строки и числа ведут себя как объекты:
+    </p>
+    <div class="img">
+      <img src="/course-js/assets/classes-5-8a335a62.webp" alt="Пример">
+    </div>
+</section>
+    <section class="container page _page" id="promises" data-page="promises">
+  <h2>
+    Промисы
+  </h2>
+  <section class="page__section">
+    <h4>Пример заголовка</h4>
+    <code class="code">
+    </code>
+  </section>
 </section>
   </main>
   <footer class="footer">
