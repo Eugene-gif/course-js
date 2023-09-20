@@ -16,16 +16,21 @@
     <img src="src/img/images/promises-1.webp" alt="Состояние промиса">
   </div>
   <p class="text">
-    Когда промис только создаётся у него будет состояние "ожидание", т.е. мы ожидаем - либо результата, либо ошибку. <br>
-    Когда промис вернул какой-то результат, он считается исполненым, т.е. промис "исполнен", и результатом его может быть какой-то объект с данными или массив документов с базы данных, в любом случае это состояние называется "испольнен". <br>
+    Когда промис только создаётся у него будет состояние "ожидание", т.е. мы
+    ожидаем - либо результата, либо ошибку. <br>
+    Когда промис вернул какой-то результат, он считается исполненым, т.е. промис
+    "исполнен", и результатом его может быть какой-то объект с данными или
+    массив документов с базы данных, в любом случае это состояние называется
+    "испольнен". <br>
     "Отклонен" - это третье состояние промиса при возникновении ошибки.
   </p>
   <br>
   <p class="bold">Создание промиса:</p>
   <code class="code none">
     const myPromise = new Promise((resolve, reject) => {
-      // <i>Выполнение асинхронных действий</i>
-      // <i>Внутри этой функции нужно в результате вызвать одну из функций resolve или reject</i>
+    // <i>Выполнение асинхронных действий</i>
+    // <i>Внутри этой функции нужно в результате вызвать одну из функций resolve
+      или reject</i>
     });
   </code>
   <div class="img">
@@ -34,7 +39,8 @@
   <br>
   <p class="bold">Получение результата промиса:</p>
   <div class="img">
-    <img src="src/img/images/promises-3.webp" alt="Получение результата промиса">
+    <img src="src/img/images/promises-3.webp"
+      alt="Получение результата промиса">
   </div>
   <br>
   <p class="bold">Получение данных с помощью Fetch API:</p>
@@ -43,11 +49,104 @@
   </div>
   <code class="code none">
     fetch('https://jsonplaceholder.typicode.com/todos')
-      .then(res => res.json())
-      .then(json => console.log(json))
-      .catch(err => console.error(err))
+    .then(res => res.json())
+    .then(json => console.log(json))
+    .catch(err => console.error(err))
   </code>
   <p class="underline">Метод "json" возвращает Промис</p>
   <br>
   <h4>Практика по Промисам:</h4>
+  <p class="underline">Node.js из коробки не поддерживает функцию fetch. fetch
+    поддерживается только браузерами.</p>
+  <code class="code">
+    fetch('https://jsonplaceholder.typicode.com/todos/55')
+    .then(response => response.json())
+    .then(json => console.log(json))
+    .catch(error => console.error(error))
+  </code>
+  <br>
+  <p class="bold">Пример 1:</p>
+  <p class="text">Упрощение задачи получения данных используя двойной промис.
+  </p>
+  <div class="img">
+    <img src="src/img/images/promises-5.webp" alt="Пример 1">
+  </div>
+  <code class="code">
+    const getData = (url) =>
+      new Promise((resolve, reject) =>
+        fetch(url)
+          .then(res => res.json())
+          .then(json => resolve(json))
+          .catch(error => reject(error))
+      )
+
+    getData('https://jsonplaceholder.typicode.com/todos')
+      .then(data => console.log(data))
+      .catch(err => console.log(error.message))
+  </code>
+  <p class="text">
+    Данную функцию можно вынести в отдельный модуль, и с помощью импора/экспорта вызывать её там, где она нужна.
+    <br>
+    Т.к. вызов её тоже не маленький и может быть различным, то можно и его вынести в отдельный модуль. Таким образом мы можем получать пользователей, задачи или комментарии с сервера в том месте, где нам это нужно, причём небольшим вызовом функции. Вот пример:
+  </p>
+  <code class="code">
+    // <i>main.js</i>
+    import getDataTodos from "@/modules/getDataTodos";
+    import getDataUsers from "@/modules/getDataUsers";
+    import getDataComments from "@/modules/getDataComments";
+
+    // <i>Вызов функции получения всех Todo</i>
+    getDataTodos();
+    // <i>Вызов функции получения всех пользователей</i>
+    getDataUsers();
+    // <i>Вызов функции получения всех комментариев</i>
+    getDataComments();
+  </code>
+  <code class="code">
+    // <i>getData.js</i>
+    const getData = (url) => {
+      return new Promise((resolve, reject) =>
+        fetch(url)
+          .then(res => res.json())
+          .then(json => resolve(json))
+          .catch(error => reject(error))
+      )
+    }
+    
+    export default getData;
+  </code>
+
+  <code class="code">
+    // <i>getDataTodos.js</i>
+    import getData from "@/modules/getData.js";
+
+    export default function getDataTodos () {
+      return getData('https://jsonplaceholder.typicode.com/todos')
+      .then(data => console.log('Todos:', data))
+      .catch(err => console.log(err.message))
+    }
+  </code>
+
+  <code class="code">
+    // <i>getDataUsers.js</i>
+    import getData from "@/modules/getData.js";
+
+    export default function getDataUsers () {
+      return getData('https://jsonplaceholder.typicode.com/users')
+      .then(data => console.log('Users:', data))
+      .catch(err => console.log(err.message))
+    }
+  </code>
+
+  <code class="code">
+    // <i>getDataComments.js</i>
+    import getData from "@/modules/getData.js";
+
+    export default function getDataComments () {
+      return getData('https://jsonplaceholder.typicode.com/comments')
+      .then(data => console.log('Comments:', data))
+      .catch(err => console.log(err.message))
+    }
+  </code>
+  <p class="underline">Т.е. вызовы функции <b class="bold">getData</b> у нас спрятаны в отдельные функции, каждая из которых имеет своё назначение, по типу: получение списка пользователей или комментариев.</p>
 </section>
