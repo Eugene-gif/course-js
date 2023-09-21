@@ -22,8 +22,8 @@ window.addEventListener('load', () => {
   });
   
   // Вызов функции получения всех Todo
-  getDataTodos();
+  // getDataTodos();
   // Вызов функции получения всех пользователей
-  getDataUsers();
+  // getDataUsers();
   // Вызов функции получения всех комментариев 
-  getDataComments();
+  // getDataComments();

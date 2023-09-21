@@ -1,0 +1,178 @@
+<section class="container page _page" id="async-await" data-page="async-await">
+  <h2>
+    Async/await
+  </h2>
+  <p class="text">
+    <b class="bold">async/await</b> - специальный синтаксис для упрощения
+    работы с промисами.
+    Async/await позволяет выполнять то же самое, что и промисы, но проще и
+    нагляднее.
+  </p>
+  <p class="text">
+    <b class="bold">Асинхронная функция</b> - это функция, которая вместо
+    значения(string, number, undefined) возвращает промис.
+  </p>
+  <p class="bold">
+    Синтаксис асинхронной функции:
+  </p>
+  <div class="img">
+    <img src="src/img/images/async-await_1.webp"
+      alt="Синтаксис асинхронной функции">
+  </div>
+  <code class="code none">
+    async function asyncFn() {
+    // <i>Всегда возвращает промис</i>
+    }
+
+    const asyncFn = async () => {
+    // <i>Всегда возвращает промис</i>
+    }
+  </code>
+  <br>
+  <p class="bold">Пример 1:</p>
+  <div class="img">
+    <img src="src/img/images/async-await_2.webp" alt="Пример 1">
+  </div>
+  <p class="bold">продолжение Примера 1:</p>
+  <div class="img">
+    <img src="src/img/images/async-await_3.webp" alt="Пример 1.1">
+  </div>
+  <br>
+  <p class="bold">Пример 2:</p>
+  <p class="text">Случай ошибки</p>
+  <div class="img">
+    <img src="src/img/images/async-await_4.webp" alt="Пример 2">
+  </div>
+  <p class="bold">продолжение Примера 2:</p>
+  <p class="text">Чтобы корректно обработать ошибку нам нужно поймать её,
+    используя метод <b class="bold">catch</b>:</p>
+  <div class="img">
+    <img src="src/img/images/async-await_5.webp" alt="Пример 2.1">
+  </div>
+  <p class="text">В данном примере к вызову функции мы добавляем <b
+      class="bold">.then</b> - если промис был успешно исполнен, и <b
+      class="bold">catch</b> - на случай если промис вернул ошибку. <br>
+    В данном примере промис выбрасывает ошибку, т.е. внутри асинхронной функции
+    мы выбрасываем ошибку, и в таком случае промис, который возвращается
+    асинхронной функцией будет автоматически отклонён с указанной ошибкой. <br>
+    Т.е. нам не нужно ничего делать, не нужно вызывать ни <span
+      class="underline">resolve</span>, ни <span class="underline">reject</span>
+    в функции, потому что таких переменных в ней вообще нету, но неявно внутри
+    этой асинхронной функции будет вызов функции <span
+      class="underline">reject</span> и ей будет передана ошибка, которую можно
+    отследить в <b class="bold underline">catch</b> и например вывести в
+    консоль.
+  </p>
+  <br>
+  <h3>Await:</h3>
+  <div class="img">
+    <img src="src/img/images/async-await_6.webp" alt="Пример">
+  </div>
+  <code class="code none">
+    const asyncFn = async () => {
+    await <Promise>
+      }
+
+      asyncFn();
+  </code>
+  <p class="text">В асинхронных функциях можно использовать ключевое слово <span
+      class="underline">await</span> с помощью которого можно ожидать результата
+    другого промиса, тем самым можно выполнять каки-либо асинхронные действия
+    внутри асинхронной функции.</p>
+  <p class="underline">"await" не работает без ключевого слова "async", они
+    всегда идут вместе. <br>
+    "await"-ов может быть несколько.
+  </p>
+  <br>
+  <p class="bold">Пример 3:</p>
+  <p class="text">Ожидание результата await:</p>
+  <div class="img">
+    <img src="src/img/images/async-await_7.webp"
+      alt="Ожидание результата await">
+  </div>
+  <p class="text">Пример 3 продолжение:</p>
+  <div class="img">
+    <img src="src/img/images/async-await_8.webp"
+      alt="Ожидание результата await">
+  </div>
+  <code class="code none">
+    const timerPromise = () => {
+    return new Promise((resolve, reject) =>
+    setTimeout(() => resolve(), 2000))
+    }
+
+    const asyncFn = async () => {
+    console.log('Timer starts');
+    const startTime = performance.now();
+    await timerPromise();
+    const endTime = performance.now();
+    console.log('Timer ended', endTime - startTime);
+    }
+
+    asyncFn();
+  </code>
+  <br>
+  <p class="bold">Переход с промисов на async/await</p>
+  <p class="text">Возьмём нашу старую функцию получения todos и перепишем на
+    синтаксис async/await</p>
+  <p class="text">Было:</p>
+  <div class="img">
+    <img src="src/img/images/async-await_9.webp" alt="Старая функция">
+  </div>
+  <code class="code none">
+    const getData = (url) => {
+    return new Promise((resolve, reject) =>
+    fetch(url)
+    .then(response => response.json())
+    .then(json => resolve(json))
+    .catch(error => reject(error))
+    )
+    }
+
+    getData('https://jsonplaceholder.typicode.com/todos')
+    .then(data => console.log(data))
+    .catch(err => console.error(err.message))
+  </code>
+  <p class="text">Стало:</p>
+  <div class="img">
+    <img src="src/img/images/async-await_10.webp" alt="Новая функция">
+  </div>
+  <code class="code none">
+    const getData = async (url) => {
+    const res = await fetch(url);
+    const json = await res.json();
+    return json;
+    }
+
+    getData('https://jsonplaceholder.typicode.com/todos')
+    .then(data => console.log(data))
+    .catch(err => console.log(err.message))
+  </code>
+  <p class="text">Переписываем вызов функции:</p>
+  <div class="img">
+    <img src="src/img/images/async-await_11.webp" alt="Новая функция">
+  </div>
+  <code class="code none">
+    const getData = async (url) => {
+      const res = await fetch(url);
+      const json = await res.json();
+      return json;
+    }
+
+    const url = "https://jsonplaceholder.typicode.com/todos";
+    const data = await getData(url);
+  </code>
+  <p class="underline">Синтаксис с "await" доступен тольков ассинхронных функциях.</p>
+  <p class="bold">Переписываем функцию с обработкой ошибок try catch</p>
+  <div class="img">
+    <img src="src/img/images/async-await_12.webp" alt="Новая функция">
+  </div>
+  <br>
+  <h4>Главное в async/await:</h4>
+  <ol>
+    <li>Async/await - это синтаксическая надстройка над промисами.</li>
+    <li>await синтаксис возможен только внутри async функций</li>
+    <li>async функция всегда возвращает Promise</li>
+    <li>async функция ожидает результата инструкции await и не выполняет последующие инструкции</li>
+  </ol>
+</section>
