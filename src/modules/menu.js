@@ -19,18 +19,10 @@ export function closeMenu() {
 btn.addEventListener('input', toggleMenu);
 overlay.addEventListener('click', closeMenu);
 document.addEventListener('keyup', (evt) => {
-  // if (evt.key === 'Escape' && btn.checked) {
-  //   closeMenu();
-  // }
-
   if (evt.key === 'Escape') {
     toggleMenu();
     btn.checked = !btn.checked;
   }
 
   if (evt.code === 'KeyS' && (evt.shiftKey || evt.metaKey)) console.log('Пидарасина!');
-  // console.log('Код: ' + evt.code);
-  // console.log('Символ: ' + evt.key);
 })
-// export const toggleMenu = toggleMenu;
-// export const closeMenu = closeMenu;
